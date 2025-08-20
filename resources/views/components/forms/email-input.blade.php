@@ -1,0 +1,1 @@
+<input type="email" name="{{ $name }}" id="{{ $id ?? $name }}" class="form-control form-control-solid {{ $class ?? '' }}" placeholder="{{ $placeholder ?? 'example@domain.com' }}" value="{{ $value ?? '' }}" {{ ($required ?? false) ? 'required' : '' }} />

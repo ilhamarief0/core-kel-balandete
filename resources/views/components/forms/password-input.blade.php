@@ -1,0 +1,1 @@
+<input type="password" name="{{ $name }}" id="{{ $id ?? $name }}" class="form-control form-control-solid {{ $class ?? '' }}" placeholder="{{ $placeholder ?? '******' }}" {{ ($required ?? false) ? 'required' : '' }} />

@@ -1,0 +1,20 @@
+/* Styling untuk area konten CKEditor */
+.ck-editor__editable {
+    min-height:600px; /* Atur tinggi minimum sesuai keinginan Anda */
+    /* Anda juga bisa menggunakan height jika ingin tinggi tetap */
+    /* height: 400px; */
+}
+
+/* Jika min-height tidak bekerja, coba dengan !important */
+.ck-editor__editable_inline {
+    min-height: 400px !important;
+}
+
+.ck-content {
+    min-height: 600px !important;
+}
+
+/* Atau jika Anda ingin menargetkan seluruh container editor */
+.ck.ck-editor__main .ck-editor__editable {
+    min-height: 400px; /* Atur tinggi minimum area konten editor */
+}

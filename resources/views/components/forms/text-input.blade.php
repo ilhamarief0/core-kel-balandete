@@ -1,0 +1,1 @@
+<input type="text" name="{{ $name }}" id="{{ $id ?? $name }}" class="form-control form-control-solid {{ $class ?? '' }}" placeholder="{{ $placeholder ?? '' }}" value="{{ $value ?? '' }}" {{ ($required ?? false) ? 'required' : '' }} />
