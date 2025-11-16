@@ -1,217 +1,83 @@
-<div id="kt_app_sidebar" class="app-sidebar flex-column" data-kt-drawer="true" data-kt-drawer-name="app-sidebar"
-    data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="225px"
-    data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
-    <div class="app-sidebar-logo px-6 d-flex align-items-center" id="kt_app_sidebar_logo">
-        <a href="#" class="d-flex align-items-center text-decoration-none">
-            <img alt="Logo" src="{{ asset('storage/'. $websiteIcon) }}" class="h-30px h-lg-40px app-sidebar-logo-default" />
-            <span class="app-sidebar-logo-minimize fs-2 fw-bolder text-white ms-3 d-none d-lg-inline" style="font-family: 'Inter', sans-serif;">
-                {{ $websiteName }}
-            </span>
-        </a>
-        <div id="kt_app_sidebar_toggle"
-            class="app-sidebar-toggle btn btn-icon btn-shadow btn-sm btn-color-muted btn-active-color-primary h-30px w-30px position-absolute top-50 start-100 translate-middle rotate"
-            data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body"
-            data-kt-toggle-name="app-sidebar-minimize">
-            <i class="ki-duotone ki-black-left-line fs-3 rotate-180">
-                <span class="path1"></span>
-                <span class="path2"></span>
-            </i>
-        </div>
-    </div>
-    <div class="app-sidebar-menu overflow-hidden flex-column-fluid">
-        <div id="kt_app_sidebar_menu_wrapper" class="app-sidebar-wrapper">
-            <div id="kt_app_sidebar_menu_scroll" class="scroll-y my-5 mx-3" data-kt-scroll="true"
-                data-kt-scroll-activate="true" data-kt-scroll-height="auto"
-                data-kt-scroll-dependencies="#kt_app_sidebar_logo, #kt_app_sidebar_footer"
-                data-kt-scroll-wrappers="#kt_app_sidebar_menu" data-kt-scroll-offset="5px"
-                data-kt-scroll-save-state="true">
-                <div class="menu menu-column menu-rounded menu-sub-indention fw-semibold fs-6" id="#kt_app_sidebar_menu"
-                    data-kt-menu="true" data-kt-menu-expand="false">
-
-                    <div class="menu-item">
-                        <a class="menu-link {{ Route::is('backend.dashboard.index') ? 'active' : '' }}"
-                            href="{{ route('backend.dashboard.index') }}">
-                            <span class="menu-icon">
-                                <i class="ki-duotone ki-element-11 fs-2">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                </i>
-                            </span>
-                            <span class="menu-title">Dashboard</span>
-                        </a>
-                    </div>
-
-                    <div class="menu-item pt-5">
-                        <div class="menu-content">
-                            <span class="menu-heading fw-bold text-uppercase fs-7">Contact Us Management</span>
+<aside id="Sidebar" class="relative flex w-[280px] shrink-0 min-h-screen bg-white border-r border-desa-foreshadow overflow-hidden">
+                <div class="fixed top-0 h-full w-[280px] flex shrink-0 flex-1 z-20 bg-white">
+                    <div class="flex flex-col h-full w-full gap-6 pt-[30px] px-6">
+                        <div class="flex items-center justify-between">
+                            <img src="{{ asset('assets/backend/images/logos/logobalandeteku.png') }}" class="flex h-[30px] shrink-0" alt="logo">
+                            <button class="flex size-11 items-center justify-center rounded-2xl border border-desa-background hover:border-desa-secondary transition-setup">
+                                <img src="{{ asset('assets/backend/images/icons/menu-secondary-green.svg') }}" class="size-6" alt="icon">
+                            </button>
                         </div>
-                    </div>
-
-                      <div class="menu-item">
-                        <a class="menu-link {{ Route::is('backend.contactus.*') ? 'active' : '' }}"
-                            href="{{ route('backend.contactus.index') }}">
-                            <span class="menu-icon">
-                                <i class="ki-duotone ki-element-11 fs-2">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                </i>
-                            </span>
-                            <span class="menu-title">Contact Us</span>
-                        </a>
-                    </div>
-
-                    <div class="menu-item pt-5">
-                        <div class="menu-content">
-                            <span class="menu-heading fw-bold text-uppercase fs-7">News Management</span>
+                        <div class="flex flex-col flex-1 gap-6 overflow-y-scroll hide-scrollbar">
+                            <nav class="flex flex-col gap-2 pb-12">
+                                <p class="font-medium text-sm text-desa-secondary">Main Menu</p>
+                                <ul>
+                                    <li class="group {{ Route::is('backend.dashboard.index') ? 'active' : '' }}">
+                                        <a href="{{ route('backend.dashboard.index') }}" class=" flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
+                                            <div class="relative flex size-6 shrink-0">
+                                                <img src="{{ asset('assets/backend/images/icons/chart-square-dark-green.svg') }}" class="absolute flex size-6 shrink-0 opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-setup" alt="icon">
+                                                <img src="{{ asset('assets/backend/images/icons/chart-square-secondary-green.svg') }}" class="absolute flex size-6 shrink-0 opacity-100 group-hover:opacity-0 group-[.active]:opacity-0 transition-setup" alt="icon">
+                                            </div>
+                                            <span class="text-left leading-5 text-desa-secondary flex flex-1 group-hover:text-desa-dark-green group-[.active]:text-desa-dark-green group-[.active]:font-medium transition-setup">
+                                                Dashboard
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li class="group {{ Route::is('backend.users.*') ? 'active' : '' }}">
+                                        <a href="{{ route('backend.users.index') }}" class=" flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
+                                            <div class="relative flex size-6 shrink-0">
+                                                <img src="{{ asset('assets/backend/images/icons/profile-dark-green.svg') }}" class="absolute flex size-6 shrink-0 opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-setup" alt="icon">
+                                                <img src="{{ asset('assets/backend/images/icons/profile-secondary-green.svg') }}" class="absolute flex size-6 shrink-0 opacity-100 group-hover:opacity-0 group-[.active]:opacity-0 transition-setup" alt="icon">
+                                            </div>
+                                            <span class="text-left leading-5 text-desa-secondary flex flex-1 group-hover:text-desa-dark-green group-[.active]:text-desa-dark-green group-[.active]:font-medium transition-setup">
+                                                Users
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="accordion group/accordion flex flex-col gap-1 w-full">
+                                    <button data-expand="Bantuan-Sosial-Content" class="group flex w-full shrink-0 items-center h-14 gap-2 rounded-2xl p-4 active">
+                                        <div class="relative flex size-6 shrink-0">
+                                            <img src="{{ asset('assets/backend/images/icons/bag-2-dark-green.svg') }}" class="absolute flex size-6 shrink-0 opacity-0 group-[.active]:opacity-100 transition-setup" alt="icon">
+                                            <img src="{{ asset('assets/backend/images/icons/bag-2-secondary-green.svg') }}" class="absolute flex size-6 shrink-0 opacity-100 group-[.active]:opacity-0 transition-setup" alt="icon">
+                                        </div>
+                                        <span class="text-left leading-5 text-desa-secondary flex flex-1 group-[.active]:text-desa-dark-green transition-setup">
+                                            Media Kelurahan
+                                        </span>
+                                        <div class="relative flex size-6 shrink-0">
+                                            <img src="{{ asset('assets/backend/images/icons/arrow-circle-dark-green-up.svg') }}" class="absolute flex size-6 shrink-0 opacity-0 group-[.active]:opacity-100 transition-setup" alt="icon">
+                                            <img src="{{ asset('assets/backend/images/icons/arrow-circle-secondary-green-down.svg') }}" class="absolute flex size-6 shrink-0 opacity-100 group-[.active]:opacity-0 transition-setup" alt="icon">
+                                        </div>
+                                    </button>
+                                    <ul id="Bantuan-Sosial-Content" class="flex flex-col flex-1r pl-[28px]">
+                                        <li class="flex items-center h-[52px] shrink-0 border-l border-desa-background last-of-type:border-0">
+                                            <div class="flex h-full w-[26px] shrink-0 overflow-hidden">
+                                                <img src="{{ asset('assets/backend/images/icons/accodion-line.svg') }}" class="h-full object-contain object-left-top" alt="ornament">
+                                            </div>
+                                            <a href="{{ route('backend.news.index') }}" class="group {{ Route::is('backend.news.*') ? 'active' : '' }} flex flex-1 items-center h-[52px] gap-2 rounded-2xl p-4 hover:bg-desa-foreshadow [&.active]:bg-desa-foreshadow transition-setup">
+                                                <span class="text-left leading-5 text-desa-secondary group-hover:text-desa-dark-green group-[.active]:text-desa-dark-green group-[.active]:font-medium transition-setup">
+                                                   Berita
+                                                </span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <ul>
+                                    <li class="group {{ Route::is('backend.websiteSetting.*') ? 'active' : '' }}">
+                                        <a href="{{ route('backend.websiteSetting.index') }}" class=" flex items-center h-14 gap-2 rounded-2xl p-4 group-hover:bg-desa-foreshadow group-[.active]:bg-desa-foreshadow transition-setup">
+                                            <div class="relative flex size-6 shrink-0">
+                                                <img src="{{ asset('assets/backend/images/icons/building-4-dark-green.svg') }}" class="absolute flex size-6 shrink-0 opacity-0 group-hover:opacity-100 group-[.active]:opacity-100 transition-setup" alt="icon">
+                                                <img src="{{ asset('assets/backend/images/icons/building-4-secondary-green.svg') }}" class="absolute flex size-6 shrink-0 opacity-100 group-hover:opacity-0 group-[.active]:opacity-0 transition-setup" alt="icon">
+                                            </div>
+                                            <span class="text-left leading-5 text-desa-secondary flex flex-1 group-hover:text-desa-dark-green group-[.active]:text-desa-dark-green group-[.active]:font-medium transition-setup">
+                                                Profile Desa
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
                         </div>
-                    </div>
-
-                      <div class="menu-item">
-                        <a class="menu-link {{ Route::is('backend.news.*') ? 'active' : '' }}"
-                            href="{{ route('backend.news.index') }}">
-                            <span class="menu-icon">
-                                <i class="ki-duotone ki-element-11 fs-2">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                </i>
-                            </span>
-                            <span class="menu-title">News</span>
-                        </a>
-                    </div>
-
-                    <div class="menu-item pt-5">
-                        <div class="menu-content">
-                            <span class="menu-heading fw-bold text-uppercase fs-7">About Management</span>
-                        </div>
-                    </div>
-
-                     <div class="menu-item">
-                        <a class="menu-link {{ Route::is('backend.about.*') ? 'active' : '' }}"
-                            href="{{ route('backend.about.index') }}">
-                            <span class="menu-icon">
-                                <i class="ki-duotone ki-element-11 fs-2">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                </i>
-                            </span>
-                            <span class="menu-title">About</span>
-                        </a>
-                    </div>
-                     <div class="menu-item">
-                        <a class="menu-link {{ Route::is('backend.team.index') ? 'active' : '' }}"
-                            href="{{ route('backend.team.index') }}">
-                            <span class="menu-icon">
-                                <i class="ki-duotone ki-element-11 fs-2">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                </i>
-                            </span>
-                            <span class="menu-title">Team</span>
-                        </a>
-                    </div>
-                     <div class="menu-item">
-                        <a class="menu-link {{ Route::is('backend.jabatan.index') ? 'active' : '' }}"
-                            href="{{ route('backend.jabatan.index') }}">
-                            <span class="menu-icon">
-                                <i class="ki-duotone ki-element-11 fs-2">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                </i>
-                            </span>
-                            <span class="menu-title">Positions</span>
-                        </a>
-                    </div>
-
-
-                    <div class="menu-item pt-5">
-                        <div class="menu-content">
-                            <span class="menu-heading fw-bold text-uppercase fs-7">Service Management</span>
-                        </div>
-                    </div>
-
-                    <div class="menu-item">
-                        <a class="menu-link {{ Route::is('backend.service.*') ? 'active' : '' }}"
-                            href="{{ route('backend.service.index') }}">
-                            <span class="menu-icon">
-                                <i class="ki-duotone ki-element-11 fs-2">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                </i>
-                            </span>
-                            <span class="menu-title">Service</span>
-                        </a>
-                    </div>
-
-                    <div class="menu-item pt-5">
-                        <div class="menu-content">
-                            <span class="menu-heading fw-bold text-uppercase fs-7">User Management</span>
-                        </div>
-                    </div>
-
-                    <div class="menu-item">
-                        <a class="menu-link {{ Route::is('backend.users.index') ? 'active' : '' }}"
-                            href="{{ route('backend.users.index') }}">
-                            <span class="menu-icon">
-                                <i class="ki-duotone ki-element-11 fs-2">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                </i>
-                            </span>
-                            <span class="menu-title">Users</span>
-                        </a>
-                    </div>
-
-                    <div class="menu-item pt-5">
-                        <div class="menu-content">
-                            <span class="menu-heading fw-bold text-uppercase fs-7">Website Setting</span>
-                        </div>
-                    </div>
-                    <div class="menu-item">
-                        <a class="menu-link {{ Route::is('backend.banner.index') ? 'active' : '' }}"
-                            href="{{ route('backend.banner.index') }}">
-                            <span class="menu-icon">
-                                <i class="ki-duotone ki-element-11 fs-2">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                </i>
-                            </span>
-                            <span class="menu-title">Banner</span>
-                        </a>
-                    </div>
-                    <div class="menu-item">
-                        <a class="menu-link {{ Route::is('backend.websiteSetting.index') ? 'active' : '' }}"
-                            href="{{ route('backend.websiteSetting.index') }}">
-                            <span class="menu-icon">
-                                <i class="ki-duotone ki-element-11 fs-2">
-                                    <span class="path1"></span>
-                                    <span class="path2"></span>
-                                    <span class="path3"></span>
-                                    <span class="path4"></span>
-                                </i>
-                            </span>
-                            <span class="menu-title">Setting</span>
-                        </a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+            </aside>

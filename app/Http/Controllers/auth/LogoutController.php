@@ -15,7 +15,7 @@ class LogoutController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        Session::flash('logout_message', 'Successfully logged out');
-        return response()->json(['message' => 'Successfully logged out']);
+        Session::flash('success', 'Successfully logged out');
+        return redirect()->route('auth.login.index');
     }
 }

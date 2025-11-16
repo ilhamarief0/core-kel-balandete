@@ -18,7 +18,9 @@ class WebsiteSettingController extends Controller
      */
     public function index()
     {
-        return view('backend.websiteSetting.index');
+        $title = 'Website Setting';
+        $setting = WebsiteSetting::find(1);
+        return view('backend.websiteSetting.index', compact('title', 'setting'));
     }
 
     /**
@@ -85,13 +87,13 @@ class WebsiteSettingController extends Controller
             $websiteSetting->website_facebook = $validatedData['website_facebook'];
             $websiteSetting->website_youtube = $validatedData['website_youtube'];
 
-        if ($request->hasFile('website_logo')) {
-            if ($websiteSetting->website_logo && Storage::disk('public')->exists($websiteSetting->website_logo)) {
-                Storage::disk('public')->delete($websiteSetting->website_logo);
+            if ($request->hasFile('website_logo')) {
+                if ($websiteSetting->website_logo && Storage::disk('public')->exists($websiteSetting->website_logo)) {
+                    Storage::disk('public')->delete($websiteSetting->website_logo);
+                }
+                $path = Helpers::storeImage($request->file('website_logo'), 'websiteSetting');
+                $websiteSetting->website_logo = $path;
             }
-            $path = Helpers::storeImage($request->file('website_logo'), 'websiteSetting');
-            $websiteSetting->website_logo = $path;
-        }
             $websiteSetting->save();
 
             DB::commit();

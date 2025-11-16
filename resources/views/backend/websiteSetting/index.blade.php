@@ -1,149 +1,144 @@
 @extends('backend.layouts.app')
 @section('content')
-            <div class="d-flex flex-column flex-column-fluid">
-              <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
-                <div id="kt_app_toolbar_container" class="app-container container-xxl d-flex flex-stack">
-                  <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
-                    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Website Settings</h1>
-                    <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
-                      <li class="breadcrumb-item text-muted">
-                        <a href="../../demo1/dist/index.html" class="text-muted text-hover-primary">Home</a>
-                      </li>
-                      <li class="breadcrumb-item">
-                        <span class="bullet bg-gray-400 w-5px h-2px"></span>
-                      </li>
-                      <li class="breadcrumb-item text-muted">Website Setting</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              <div id="kt_app_content" class="app-content flex-column-fluid">
-                <div id="kt_app_content_container" class="app-container container-xxl">
-                  <div class="card">
-                    <div class="card-header">
-                      <div class="card-title fs-3 fw-bold">Website Settings</div>
-                      </div>
-                    <form id="kt_modal_websiteSetting_update_form" class="form" enctype="multipart/form-data">
-                      <div class="card-body p-9">
-                        <div class="row mb-5">
-                          <div class="col-xl-3">
-                            <div class="fs-6 fw-semibold mt-2 mb-3">Project Logo</div>
-                          </div>
-                          <div class="col-lg-8 fv-row">
-                            <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url('{{ asset('assets/backend/media/svg/avatars/blank.svg') }}')">
-                              <div class="image-input-wrapper w-125px h-125px"></div>
-                              <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
-                                <i class="bi bi-pencil-fill fs-7"></i>
-                                <input type="file" name="website_logo" accept=".png, .jpg, .jpeg" />
-                                <input type="hidden" name="website_icon_remove" />
-                              </label>
-                              <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar">
-                                <i class="bi bi-x fs-2"></i>
-                              </span>
-                              <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove avatar">
-                                <i class="bi bi-x fs-2"></i>
-                              </span>
+                <div id="Content" class="relative flex flex-col flex-1 gap-6 p-6 pb-[30px] w-full shrink-0">
+                    <div id="Header" class="flex items-center justify-between">
+                        <div class="flex flex-col gap-2">
+                            <div class="flex gap-1 items-center leading-5 text-desa-secondary">
+                                <p class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize ">Profile Kelurahan</p>
+                                <span>/</span>
+                                <p class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize ">Edit Profile Kelurahan</p>
                             </div>
-                            <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
-                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                          </div>
-                          </div>
-                        <div class="row mb-8">
-                          <div class="col-xl-3">
-                            <div class="fs-6 fw-semibold mt-2 mb-3">Website Name</div>
-                          </div>
-                          <div class="col-xl-9 fv-row">
-                            <input type="text" class="form-control form-control-solid" name="website_name" id="website_name" />
-                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                          </div>
-                        </div>
-                        <div class="row mb-8">
-                          <div class="col-xl-3">
-                            <div class="fs-6 fw-semibold mt-2 mb-3">Website Description</div>
-                          </div>
-                          <div class="col-xl-9 fv-row">
-                            <textarea name="website_description" id="website_description" class="form-control form-control-solid h-100px"></textarea>
-                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                          </div>
-                        </div>
-                        <div class="row mb-8">
-                          <div class="col-xl-3">
-                            <div class="fs-6 fw-semibold mt-2 mb-3">Website Address</div>
-                          </div>
-                          <div class="col-xl-9 fv-row">
-                            <input type="text" class="form-control form-control-solid" name="website_address" id="website_address" />
-                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                          </div>
-                        </div>
-                        <div class="row mb-8">
-                          <div class="col-xl-3">
-                            <div class="fs-6 fw-semibold mt-2 mb-3">Website Phone</div>
-                          </div>
-                          <div class="col-xl-9 fv-row">
-                            <input type="text" class="form-control form-control-solid" name="website_phone" id="website_phone" />
-                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                          </div>
-                        </div>
-                        <div class="row mb-8">
-                          <div class="col-xl-3">
-                            <div class="fs-6 fw-semibold mt-2 mb-3">Website Email</div>
-                          </div>
-                          <div class="col-xl-9 fv-row">
-                            <input type="text" class="form-control form-control-solid" name="website_email" id="website_email" />
-                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                          </div>
-                        </div>
-                        <div class="row mb-8">
-                          <div class="col-xl-3">
-                            <div class="fs-6 fw-semibold mt-2 mb-3">Website Instagram</div>
-                          </div>
-                          <div class="col-xl-9 fv-row">
-                            <input type="text" class="form-control form-control-solid" name="website_instagram" id="website_instagram" />
-                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                          </div>
-                        </div>
-                        <div class="row mb-8">
-                          <div class="col-xl-3">
-                            <div class="fs-6 fw-semibold mt-2 mb-3">Website Youtube</div>
-                          </div>
-                          <div class="col-xl-9 fv-row">
-                            <input type="text" class="form-control form-control-solid" name="website_youtube" id="website_youtube" />
-                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                          </div>
-                        </div>
-                        <div class="row mb-8">
-                          <div class="col-xl-3">
-                            <div class="fs-6 fw-semibold mt-2 mb-3">Website Facebook</div>
-                          </div>
-                          <div class="col-xl-9 fv-row">
-                            <input type="text" class="form-control form-control-solid" name="website_facebook" id="website_facebook" />
-                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                          </div>
-                        </div>
-                        <div class="row mb-8">
-                          <div class="col-xl-3">
-                            <div class="fs-6 fw-semibold mt-2 mb-3">Website X</div>
-                          </div>
-                          <div class="col-xl-9 fv-row">
-                            <input type="text" class="form-control form-control-solid" name="website_x" id="website_x" />
-                            <div class="fv-plugins-message-container invalid-feedback"></div>
-                          </div>
+                            <h1 class="font-semibold text-2xl">Edit Profile Kelurahan</h1>
                         </div>
                     </div>
-                      <div class="card-footer d-flex justify-content-end py-6 px-9">
-                        <button type="submit" class="btn btn-primary" data-kt-websiteSetting-update-action="submit">
-                            <span class="indicator-label">Submit</span>
-                            <span class="indicator-progress">Please wait...
-                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                        </button>
-                      </div>
-                      </form>
-                    </div>
-                  </div>
+                    <form action="{{ route('backend.websiteSetting.update', ['websiteSetting' => $setting->id]) }}" method="PUT" enctype="multipart/form-data" class="capitalize">
+                      @csrf
+                        <div class="shrink-0 rounded-3xl p-6 bg-white flex flex-col gap-6 h-fit">
+                            <section id="Photos" class="flex justify-between">
+                                <h2 class="font-medium leading-5 text-desa-secondary flex h-[100px] items-center w-[calc(424/904*100%)]">Logo Kelurahan</h2>
+                                <div class="photo-input-container flex flex-col gap-6 flex-1">
+                                    <div class="photo-form group/parent flex items-center justify-between">
+                                        <div class="Photo-Preview flex itce justify-center w-[120px] h-[100px] rounded-2xl overflow-hidden bg-desa-foreshadow">
+                                            <img class="Photo size-full object-cover" src="{{ asset('assets/backend/images/thumbnails/thumbnail-bansos-preview.svg') }}" alt="image"/>
+                                        </div>
+                                        <div class="relative">
+                                            <input required type="file" name="" class="photo-input absolute opacity-0 left-0 top-0 size-0 -z-10" />
+                                            <div class="action flex gap-3">
+                                                <button type="button" class="Upload-btn relative flex items-center py-4 px-6 rounded-2xl bg-desa-black gap-[10px]">
+                                                    <img src="{{ asset('assets/backend/images/icons/send-square-white.svg') }}" alt="icon" class="size-6 shrink-0" />
+                                                    <p class="font-medium leading-5 text-white">Upload</p>
+                                                </button>
+                                                <button type="button" class="delete size-14 rounded-2xl p-4 bg-desa-red items-center hidden justify-center group-[&.new]/parent:flex" onclick="deletePhotoForm(this)">
+                                                    <img src="{{ asset('assets/backend/images/icons/trash-white.svg') }}" class="flex size-6 shrink-0" alt="icon">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                            <hr class="border-desa-background" />
+                            <section id="Nama-Desa" class="flex items-center justify-between">
+                                <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Nama Website</p>
+                                <div class="flex flex-col gap-3 flex-1 shrink-0">
+                                    <label class="relative group peer w-full">
+                                        <input type="text" placeholder="Ketik nama kelurahan" value="{{ $setting->website_name }}" class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
+                                        <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
+                                            <img src="{{ asset('assets/backend/images/icons/building-4-secondary-green.svg') }}" class="size-6 hidden group-has-[:placeholder-shown]:flex" alt="icon">
+                                            <img src="{{ asset('assets/backend/images/icons/building-4-black.svg') }}" class="size-6 flex group-has-[:placeholder-shown]:hidden" alt="icon">
+                                        </div>
+                                    </label>
+                                </div>
+                            </section>
+                            <hr class="border-desa-background" />
+                              <section id="Lokasi" class="flex items-center justify-between">
+                                  <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">
+                                      Lokasi Desa
+                                  </p>
+                                  <div class="flex flex-col gap-3 flex-1 shrink-0">
+                                      <textarea
+                                          name="website_address"
+                                          id="website_address"
+                                          placeholder="Ketik alamat desa"
+                                          rows="6"
+                                          class="appearance-none outline-none w-full rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-4 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300"
+                                      >{{ old('website_address', $setting->website_address ?? '') }}</textarea>
+                                  </div>
+                              </section>
+                            <hr class="border-desa-background" />
+                            <section id="Kepala-Desa" class="flex items-center justify-between">
+                                <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Nama Kepala Desa</p>
+                                <div class="flex flex-col gap-3 flex-1 shrink-0">
+                                    <label class="relative group peer w-full">
+                                        <input type="text" placeholder="Pilih Kepala Desa" class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
+                                        <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
+                                            <img src="{{ asset('assets/backend/images/icons/user-square-secondary-green.svg') }}" class="size-6 hidden group-has-[:placeholder-shown]:flex" alt="icon">
+                                            <img src="{{ asset('assets/backend/images/icons/user-square-black.svg') }}" class="size-6 flex group-has-[:placeholder-shown]:hidden" alt="icon">
+                                        </div>
+                                    </label>
+                                </div>
+                            </section>
+                            <hr class="border-desa-background" />
+                            <section id="Luas-Pertanian" class="flex items-center justify-between">
+                                <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Luas Pertanian Desa</p>
+                                <div class="flex flex-col gap-3 flex-1 shrink-0">
+                                    <label class="relative group peer w-full">
+                                        <input type="number" placeholder="Masukan total luas pertanian" class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 pr-[98px] gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
+                                        <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
+                                            <img src="{{ asset('assets/backend/images/icons/tree-secondary-green.svg') }}" class="size-6 hidden group-has-[:placeholder-shown]:flex" alt="icon">
+                                            <img src="{{ asset('assets/backend/images/icons/tree-black.svg') }}" class="size-6 flex group-has-[:placeholder-shown]:hidden" alt="icon">
+                                        </div>
+                                        <div class="absolute transform -translate-y-1/2 top-1/2 right-4 flex shrink-0 gap-6">
+                                            <div class="w-px h-6 border border-desa-background"></div>
+                                            <span class="font-medium leading-5 text-desa-black group-has-[:placeholder-shown]:text-desa-secondary normal-case">m<sup>2</sup></span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </section>
+                            <hr class="border-desa-background" />
+                            <section id="Luas-Area" class="flex items-center justify-between">
+                                <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Luas Area Desa</p>
+                                <div class="flex flex-col gap-3 flex-1 shrink-0">
+                                    <label class="relative group peer w-full">
+                                        <input type="number" placeholder="Masukan total luas area" class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 pr-[98px] gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
+                                        <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
+                                            <img src="{{ asset('assets/backend/images/icons/grid-5-secondary-green.svg') }}" class="size-6 hidden group-has-[:placeholder-shown]:flex" alt="icon">
+                                            <img src="{{ asset('assets/backend/images/icons/grid-5-black.svg') }}" class="size-6 flex group-has-[:placeholder-shown]:hidden" alt="icon">
+                                        </div>
+                                        <div class="absolute transform -translate-y-1/2 top-1/2 right-4 flex shrink-0 gap-6">
+                                            <div class="w-px h-6 border border-desa-background"></div>
+                                            <span class="font-medium leading-5 text-desa-black group-has-[:placeholder-shown]:text-desa-secondary normal-case">m<sup>2</sup></span>
+                                        </div>
+                                    </label>
+                                </div>
+                            </section>
+                            <hr class="border-desa-background" />
+                            <section id="Jumlah Penduduk" class="flex items-center justify-between">
+                                <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Jumlah Penduduk Desa</p>
+                                <div class="flex flex-col gap-3 flex-1 shrink-0">
+                                    <label class="relative group peer w-full">
+                                        <input type="number" placeholder="Masukan total penduduk desa" class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
+                                        <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
+                                            <img src="{{ asset('assets/backend/images/icons/profile-2user-secondary-green.svg') }}" class="size-6 hidden group-has-[:placeholder-shown]:flex" alt="icon">
+                                            <img src="{{ asset('assets/backend/images/icons/profile-2user-black.svg') }}" class="size-6 flex group-has-[:placeholder-shown]:hidden" alt="icon">
+                                        </div>
+                                    </label>
+                                </div>
+                            </section>
+                            <hr class="border-desa-background" />
+                            <section id="Deskripsi" class="flex items-center justify-between">
+                                <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Deskripsi Tentang Desa</p>
+                                <div class="flex flex-col gap-3 flex-1 shrink-0">
+                                    <textarea name="" id="" value="{{ $setting->website_description }}" placeholder="Jelaskan lebih detail tentang desa terkait" rows="6" class="appearance-none outline-none w-full rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-4 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">{{ old('website_address', $setting->website_description ?? '') }}</textarea>
+                                </div>
+                            </section>
+                            <hr class="border-desa-background w-[calc(100%+48px)] -mx-6" />
+                            <section id="Buttons" class="flex items-center justify-end gap-4">
+                                <a href="kd-event-desa.html">
+                                    <div class="py-[18px] rounded-2xl bg-desa-red w-[180px] text-center flex justify-center font-medium text-white">Batal, Tidak jadi</div>
+                                </a>
+                                <button id="submitButton" type="submit" class="py-[18px] rounded-2xl disabled:bg-desa-grey w-[180px] text-center flex justify-center font-medium text-white bg-desa-dark-green transition-all duration-300">Save Changes</button>
+                            </section>
+                        </div>
+                    </form>
                 </div>
-              </div>
-            @endsection
-
-@push('scripts')
-    <script src="{{ asset('assets/backend/js/custom/apps/websiteSetting/update.js') }}"></script>
-@endpush
+@endsection

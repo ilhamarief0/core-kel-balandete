@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontend;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Banner;
+use App\Models\InformasiKelurahan;
 use App\Models\News;
 use App\Models\Service;
 use App\Models\WebsiteSetting;
@@ -19,11 +20,13 @@ class LandingPageController extends Controller
     {
         $title = 'Home';
         $news = News::latest()->take(3)->get();
-        $banner = Banner::where('is_active', 'yes')->get();
+        $banner = Banner::where('is_active', 'yes')->take(3)->get();
         $websiteSetting = WebsiteSetting::first()->get();
         $service = Service::get();
         $about = About::where('view', 'landingpage')->first();
-        return view('frontend.landingpage.index', compact('title' ,'news', 'banner', 'service', 'about'));
+        $informasi = InformasiKelurahan::get();
+
+        return view('frontend.landingpage.index', compact('title' ,'news', 'banner', 'service', 'about', 'informasi'));
     }
 
     /**

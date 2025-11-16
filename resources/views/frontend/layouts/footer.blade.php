@@ -1,96 +1,63 @@
-    <!-- footer area start -->
-    <footer class="footer-area footer-area-2 bg-gray mt-0 pd-top-120">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="widget widget_about">
-                             <div class="logo-container d-flex align-items-center">
-                            <a href="/" class="logo-link animated-logo">
-                                <img src="{{ asset('storage/'. $websiteIcon) }}" alt="{{ $websiteName }} Icon" class="website-icon" style="width: 35px; height: 40px; margin-right: 10px;">
-                                <span class="website-name">{{ $websiteName }}</span>
-                            </a>
-                        </div>
-                        <div class="details">
-                            <p>{{ $websiteDescription }}</p>
-                            <div class="subscribe mt-4">
-                                <input type="text" placeholder="E-mail">
-                                <button><i class="fas fa-chevron-right"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 ps-xl-5">
-                    <div class="widget widget_nav_menu">
-                        <h4 class="widget-title">Our Service</h4>
-                        <ul>
-                          @foreach ($serviceList as $serviceLists)
-                          <li><a href="{{ route('service.index', Str::slug($serviceLists->title)) }}"><i class="fas fa-chevron-right"></i> {{ $serviceLists->title }}</a></li>
-                          @endforeach
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 ps-xl-5">
-                    <div class="widget widget_nav_menu">
-                        <h4 class="widget-title">Latest News</h4>
-                        <ul>
-                          @foreach ($newsList as $newsLists)
-                          <li><a href="{{ route('news.detail', Str::slug($newsLists->title)) }}"><i class="fas fa-chevron-right"></i>{{ $newsLists->title }}</a></li>
-                          @endforeach
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="widget widget-recent-post">
-                        <h4 class="widget-title">Contact us</h4>
-                        <div class="widget widget_contact">
-                            <ul class="details">
-                                <li><i class="fa fa-map-marker-alt"></i>{{ $websiteSetting->website_address  }}</li>
-                                <li class="mt-3"><i class="fa fa-phone-alt"></i>{{ $websiteSetting->website_phone }}</li>
-                                <li class="mt-2"><i class="fas fa-envelope"></i>{{ $websiteSetting->website_email }}</li>
-                            </ul>
-                            <ul class="social-media mt-4">
-                              @if ($websiteSetting->website_facebook)
-                              <li>
-                                  <a href="{{ $websiteSetting->website_facebook }}">
-                                      <i class="fab fa-facebook-f"></i>
-                                  </a>
-                              </li>
-                              @endif
-                              @if ($websiteSetting->website_x)
-                              <li>
-                                  <a href="{{ $websiteSetting->website_x }}">
-                                       <i class="fab fa-x-twitter"></i>
-                                  </a>
-                              </li>
-                              @endif
-                              @if ($websiteSetting->website_instagram)
-                              <li>
-                                  <a href="{{ $websiteSetting->website_instagram }}">
-                                      <i class="fab fa-instagram"></i>
-                                  </a>
-                              </li>
-                              @endif
-                              @if ($websiteSetting->website_youtube)
-                              <li>
-                                  <a href="{{ $websiteSetting->website_youtube }}">
-                                      <i class="fab fa-youtube"></i>
-                                  </a>
-                              </li>
-                              @endif
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<footer class="bg-cp-black w-full relative overflow-hidden mt-20">
+    <div class="container max-w-[1130px] mx-auto flex flex-wrap gap-y-4 items-center justify-between pt-[100px] pb-[220px] relative z-10">
+      <div class="flex flex-col gap-10">
+        <div class="flex items-center gap-3">
+          <div class="flex shrink-0 h-[43px] overflow-hidden">
+              <img src="{{ asset('assets/frontend/logo/logo.png') }}" class="object-contain w-full h-full" alt="logo">
+          </div>
+          <div class="flex flex-col">
+            <p id="CompanyName" class="font-extrabold text-xl leading-[30px] text-white">BalandeteKu</p>
+            <p id="CompanyTagline" class="text-sm text-cp-light-grey">Build Futuristic Dreams</p>
+          </div>
         </div>
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 align-self-center">
-                        <p>© {{ $websiteName }}  2025 | All Rights Reserved</p>
-                    </div>
-                </div>
+        <div class="flex items-center gap-4">
+          <a href="">
+            <div class="w-6 h-6 flex shrink-0 overflow-hidden">
+              <img src="{{ asset('assets/frontend/icons/youtube.svg') }}" class="w-full h-full object-contain" alt="youtube">
             </div>
+          </a>
+          <a href="">
+            <div class="w-6 h-6 flex shrink-0 overflow-hidden">
+              <img src="{{ asset('assets/frontend/icons/whatsapp.svg') }}" class="w-full h-full object-contain" alt="whatsapp">
+            </div>
+          </a>
+          <a href="">
+            <div class="w-6 h-6 flex shrink-0 overflow-hidden">
+              <img src="{{ asset('assets/frontend/icons/facebook.svg') }}" class="w-full h-full object-contain" alt="facebook">
+            </div>
+          </a>
+          <a href="">
+            <div class="w-6 h-6 flex shrink-0 overflow-hidden">
+              <img src="{{ asset('assets/frontend/icons/instagram.svg') }}" class="w-full h-full object-contain" alt="instagram">
+            </div>
+          </a>
         </div>
-    </footer>
-    <!-- footer area end -->
+      </div>
+      <div class="flex flex-wrap gap-[50px]">
+        <div class="flex flex-col w-[200px] gap-3">
+          <p class="font-bold text-lg text-white">Products</p>
+          <a href="" class="text-cp-light-grey hover:text-white transition-all duration-300">General Contract</a>
+          <a href="" class="text-cp-light-grey hover:text-white transition-all duration-300">Building Assessment</a>
+          <a href="" class="text-cp-light-grey hover:text-white transition-all duration-300">3D Paper Builder</a>
+          <a href="" class="text-cp-light-grey hover:text-white transition-all duration-300">Legal Constructions</a>
+        </div>
+        <div class="flex flex-col w-[200px] gap-3">
+          <p class="font-bold text-lg text-white">About</p>
+          <a href="" class="text-cp-light-grey hover:text-white transition-all duration-300">We’re Hiring</a>
+          <a href="" class="text-cp-light-grey hover:text-white transition-all duration-300">Our Big Purposes</a>
+          <a href="" class="text-cp-light-grey hover:text-white transition-all duration-300">Investor Relations</a>
+          <a href="" class="text-cp-light-grey hover:text-white transition-all duration-300">Media Press</a>
+        </div>
+        <div class="flex flex-col w-[200px] gap-3">
+          <p class="font-bold text-lg text-white">Useful Links</p>
+          <a href="" class="text-cp-light-grey hover:text-white transition-all duration-300">Privacy & Policy</a>
+          <a href="" class="text-cp-light-grey hover:text-white transition-all duration-300">Terms & Conditions</a>
+          <a href="contact.html" class="text-cp-light-grey hover:text-white transition-all duration-300">Contact Us</a>
+          <a href="" class="text-cp-light-grey hover:text-white transition-all duration-300">Download Template</a>
+        </div>
+      </div>
+    </div>
+    <div class="absolute -bottom-[135px] w-full">
+      <p class="font-extrabold text-[250px] leading-[375px] text-center text-white opacity-5 select-none">BalandeteKu</p>
+    </div>
+  </footer>

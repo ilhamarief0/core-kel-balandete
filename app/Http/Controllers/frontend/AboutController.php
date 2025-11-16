@@ -14,9 +14,10 @@ class AboutController extends Controller
      */
     public function index()
     {
+        $title = "Profil Kelurahan";
         $team = Team::with('position')->take(3)->get();
         $about = About::where('view', 'aboutdetail')->first();
-        return view('frontend.about.index', compact('team', 'about'));
+        return view('frontend.about.index', compact('team', 'about', 'title'));
     }
 
     /**

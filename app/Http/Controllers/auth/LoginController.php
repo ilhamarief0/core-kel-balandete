@@ -12,7 +12,8 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('auth.login');
+        $title = "Login";
+        return view('auth.login', compact('title'));
     }
 
     public function LoginAction(Request $request)
@@ -31,18 +32,9 @@ class LoginController extends Controller
 
         if (Auth::attempt($request->only('email', 'password'))) {
             $request->session()->regenerate();
-            Session::flash('success_message', 'Successfully logged in');
-
-            return response()->json([
-                'success' => true,
-                'redirect_url' => url('/backend/dashboard'),
-            ]);
-
-        } else {
-            return response()->json([
-                'success' => false,
-                'message' => 'Invalid email or password.',
-            ]);
+            Session::flash('success', 'Successfully logged in');
+            return redirect()->route('backend.dashboard.index')->with('loginSuccess', 'Berhasil Login!');
         }
+
     }
 }

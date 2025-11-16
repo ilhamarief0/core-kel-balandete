@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f2f9f6;
+    color: rgb(0, 122, 255);
+    font-family: "Lexend Deca";
+}
+
+.hide-scrollbar {
+    overflow: auto; /* Allows scrolling */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
+@layer utilities {
+    .gradient-vertical {
+        background: linear-gradient(209.83deg, #89b854 1.15%, #042f2b 100%);
+    }
+    .gradient-horizontal {
+        background: linear-gradient(272.68deg, #89b854 0%, #042f2b 100%);
+    }
+    .transition-setup {
+        @apply transition-all duration-300;
+    }
+    .input-invalid-state{
+        @apply  !text-desa-red !ring-desa-red !text-desa-red placeholder:!text-desa-red
+    }
+}
+
+.box {
+    background-image: repeating-linear-gradient(270deg, #f1fae6, #f1fae6 8px, transparent 8px, transparent 15px, #f1fae6 15px);
+    background-size: 100% 2px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+}
+
+.square-dashed {
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%23DDE5E1' stroke-width='3' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+    border-radius: 16px;
+}
+
+.bukti-menerima-bansos[src="#"], .bukti-menerima-bansos[src=""] {
+    display: none;
+}

@@ -14,8 +14,9 @@ return new class extends Migration
         Schema::create('contact_us', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email');
-            $table->string('contact');
+            $table->string('phone');
+            $table->string('category');
+            $table->string('report_proof');
             $table->longText('message');
             $table->boolean('is_read')->default(false);
             $table->timestamps();

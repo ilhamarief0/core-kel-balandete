@@ -1,44 +1,33 @@
-<div class="td-search-popup" id="td-search-popup">
-    <form action="{{ url('/search') }}" method="GET" class="search-form"> {{-- Action ke URL search --}}
-        <div class="form-group">
-            <input type="text" name="q" class="form-control" placeholder="Search.....">
-        </div>
-        <button type="submit" class="submit-btn"><i class="fa fa-search"></i></button>
-    </form>
-</div>
-<div class="body-overlay" id="body-overlay"></div>
-
-{{-- Tambahkan kelas 'sticky-header' dan 'initial-transparent' --}}
-<nav class="navbar navbar-area navbar-area-2 navbar-expand-lg sticky-header @if(Request::is('/')) initial-transparent @else bg-white @endif">
-    <div class="container nav-container">
-        <div class="responsive-mobile-menu">
-            <button class="menu toggle-btn d-block d-lg-none" data-target="#itech_main_menu"
-            aria-expanded="false" aria-label="Toggle navigation">
-                <span class="icon-left"></span>
-                <span class="icon-right"></span>
-            </button>
-        </div>
-        <div class="logo-container d-flex align-items-center">
-            <a href="/" class="logo-link animated-logo">
-                <img src="{{ asset('storage/'. $websiteIcon) }}" alt="{{ $websiteName }} Icon" class="website-icon" style="width: 35px; height: 40px; margin-right: 10px;">
-                <span class="website-name">{{ $websiteName }}</span>
-            </a>
-        </div>
-        <div class="nav-right-part nav-right-part-mobile">
-            <a class="search-bar-btn" href="#">
-                <i class="fa fa-search"></i>
-            </a>
-        </div>
-        <div class="collapse navbar-collapse" id="itech_main_menu">
-            <ul class="navbar-nav menu-open text-lg-center ps-lg-5">
-                <li><a href="/">Home</a></li>
-                <li><a href="{{ route('about.index') }}">About</a></li>
-                <li><a href="{{ route('team.index') }}">Team</a></li>
-                <li><a href="{{ route('news.index') }}">News</a></li>
+<div class="bg-[#F6F7FA] relative">
+    <div class="container max-w-[1130px] mx-auto relative pt-10 z-10">
+        <nav class="flex flex-wrap items-center justify-between bg-white p-[20px_30px] rounded-[20px] gap-y-3">
+            <div class="flex items-center gap-3">
+                <div class="flex shrink-0 h-[43px] overflow-hidden">
+                    <img src="{{ asset('assets/frontend/logo/logo.png') }}" class="object-contain w-full h-full" alt="logo">
+                </div>
+                <div class="flex flex-col">
+                    <p id="CompanyName" class="font-extrabold text-xl leading-[30px]">BalandeteKu</p>
+                    <p id="CompanyTagline" class="text-sm text-cp-light-grey">Dari Balandete Untuk Semua</p>
+                </div>
+            </div>
+            <ul class="flex flex-wrap items-center gap-[30px]">
+                <li class="font-semibold hover:text-cp-dark-blue transition-all duration-300 {{ request()->is('/') ? 'text-cp-dark-blue' : '' }}">
+                    <a href="{{ route('landingpage.index') }}">Home</a>
+                </li>
+                <li class="font-semibold hover:text-cp-dark-blue transition-all duration-300 {{ request()->routeIs('products.*') ? 'text-cp-dark-blue' : '' }}">
+                    <a href="{{ route('landingpage.index') }}">Products</a>
+                </li>
+                <li class="font-semibold hover:text-cp-dark-blue transition-all duration-300 {{ request()->routeIs('company') ? 'text-cp-dark-blue' : '' }}">
+                    <a href="{{ route('landingpage.index') }}">Company</a>
+                </li>
+                <li class="font-semibold hover:text-cp-dark-blue transition-all duration-300 {{ request()->routeIs('news.*') ? 'text-cp-dark-blue' : '' }}">
+                    <a href="{{ route('news.index') }}">Berita</a>
+                </li>
+                <li class="font-semibold hover:text-cp-dark-blue transition-all duration-300 {{ request()->routeIs('about') ? 'text-cp-dark-blue' : '' }}">
+                    <a href="{{ route('landingpage.index') }}">About</a>
+                </li>
             </ul>
-        </div>
-        <div class="nav-right-part nav-right-part-desktop align-self-center">
-            <a class="btn btn-base ml-3 d-none d-lg-block" href="{{ route('contactus.index') }}">Contact Us <i class="fa fa-arrow-right"></i></a>
-        </div>
+            <a href="{{ route('contactus.index') }}" class="bg-cp-dark-blue p-[14px_20px] w-fit rounded-xl hover:shadow-[0_12px_30px_0_#312ECB66] transition-all duration-300 font-bold text-white">Contact Us</a>
+        </nav>
     </div>
-</nav>
+</div>

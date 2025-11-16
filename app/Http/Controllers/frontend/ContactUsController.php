@@ -4,36 +4,51 @@ namespace App\Http\Controllers\frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\ContactUs;
+use App\Helpers\Helpers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class ContactUsController extends Controller
 {
-    public function index()
-    {
-      return view('frontend.contactus.index');
-    }
+
+  public function index()
+  {
+    $title = "Contactus";
+    return view('frontend.contactus.index', compact('title'));
+  }
 
     public function submit(Request $request)
     {
         try {
-            $request->validate([
+            $validatedData = $request->validate([
                 'name' => 'required|string|max:255',
-                'email' => 'required|email|max:255',
-                'contact' => 'required|string|max:255',
+                'phone' => 'required',
+                'category' => 'required|string|max:255',
                 'message' => 'required|string',
+                'report_proof' => 'required'
             ]);
 
-            ContactUs::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'contact' => $request->contact,
-                'message' => $request->message,
-            ]);
-            return response()->json(['success' => true, 'message' => 'Your message has been sent successfully!']);
+            $contactData = [
+                'name' => $validatedData['name'],
+                'phone' => $validatedData['phone'],
+                'category' => $validatedData['category'],
+                'message' => $validatedData['message'],
+            ];
+
+            if ($request->hasFile('report_proof')) {
+                $contactData['report_proof'] = Helpers::storeImage($request->file('report_proof'), 'report_proof');
+            }
+
+            ContactUs::create($contactData);
+
+            Session::flash('success', 'Berhasil Mengirim Laporan!');
+            return redirect()->route('contactus.index');
+
         } catch (\Illuminate\Validation\ValidationException $e) {
-            return response()->json(['success' => false, 'message' => 'Validation Error: ' . $e->getMessage()], 422);
+            return back()->withErrors($e->validator)->withInput();
         } catch (\Exception $e) {
-            return response()->json(['success' => false, 'message' => 'An error occurred: ' . $e->getMessage()], 500);
+            Session::flash('error', 'Terjadi kesalahan: ' . $e->getMessage());
+            return back()->withInput();
         }
     }
 }

@@ -1,121 +1,128 @@
 @extends('backend.layouts.app')
 
-@section('content')
-    <div class="d-flex flex-column flex-column-fluid">
-        <div id="kt_app_toolbar" class="app-toolbar py-3 py-lg-6">
-            <div id="kt_app_toolbar_container" class="app-container container-xxxl d-flex flex-stack">
-                <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
-                    <h1 class="page-heading d-flex text-dark fw-bold fs-3 flex-column justify-content-center my-0">Edit News</h1>
-                    <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
-                        <li class="breadcrumb-item text-muted">
-                            <a href="{{ url('/') }}" class="text-muted text-hover-primary">Home</a>
-                        </li>
-                        <li class="breadcrumb-item">
-                            <span class="bullet bg-gray-400 w-5px h-2px"></span>
-                        </li>
-                        <li class="breadcrumb-item text-muted">Edit News</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div id="kt_app_content" class="app-content flex-column-fluid">
-            <div id="kt_app_content_container" class="app-container container-xxxl">
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title fs-3 fw-bold">Edit News</div>
-                    </div>
-                  <form id="kt_modal_edit_news_form" class="form" enctype="multipart/form-data" data-edit-url="{{ route('backend.news.update', Crypt::encryptString($newsEdit->id)) }}">
-                        @csrf
-                        @method('PUT')
-                        <div class="card-body p-9">
-                            <div class="row mb-10">
-                                <div class="col-xl-3">
-                                    <div class="fs-6 fw-semibold mt-2 mb-3">News Image</div>
-                                </div>
-                                <div class="col-lg-9 fv-row">
-                                    <div
-                                        class="image-input image-input-outline w-100"
-                                        data-kt-image-input="true"
-                                        style="background-image: url('{{ asset('assets/backend/media/svg/avatars/blank.svg') }}');"
-                                    >
-                                        <div
-                                            class="image-input-wrapper"
-                                            style="width: 100%; height: 400px; background-size: cover; background-position: center; background-image: url('{{ asset('storage/'. $newsEdit->image) }}');"
-                                        ></div>
-
-                                        <label
-                                            class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
-                                            data-kt-image-input-action="change"
-                                            data-bs-toggle="tooltip"
-                                            title="Change image"
-                                        >
-                                            <i class="bi bi-pencil-fill fs-7"></i>
-                                            <input type="file" name="image" accept=".png, .jpg, .jpeg" /> <input type="hidden" name="news_image_remove" /> </label>
-
-                                        <span
-                                            class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
-                                            data-kt-image-input-action="cancel"
-                                            data-bs-toggle="tooltip"
-                                            title="Cancel image"
-                                        >
-                                            <i class="bi bi-x fs-2"></i>
-                                        </span>
-
-                                        <span
-                                            class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-white shadow"
-                                            data-kt-image-input-action="remove"
-                                            data-bs-toggle="tooltip"
-                                            title="Remove image"
-                                        >
-                                            <i class="bi bi-x fs-2"></i>
-                                        </span>
-                                    </div>
-
-                                    <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
-                                    <div class="fv-plugins-message-container invalid-feedback"></div>
-                                </div>
-                            </div>
-
-                            <div class="row mb-8">
-                                <div class="col-xl-3">
-                                    <div class="fs-6 fw-semibold mt-2 mb-3">News Title</div>
-                                </div>
-                                <div class="col-xl-9 fv-row">
-                                    <input type="text" class="form-control form-control-solid" name="title" value="{{ old('title', $newsEdit->title) }}" id="title" />
-                                    <div class="fv-plugins-message-container invalid-feedback"></div>
-                                </div>
-                            </div>
-                            <div class="row mb-8">
-                                <div class="col-xl-3">
-                                    <div class="fs-6 fw-semibold mt-2 mb-3">News Content</div>
-                                </div>
-                                <div class="col-xl-9 fv-row">
-                                    <textarea name="content" id="kt_docs_ckeditor_classic" class="form-control form-control-solid h-400px">
-                                        {{ old('content', $newsEdit->content) }}
-                                    </textarea>
-                                    <div class="fv-plugins-message-container invalid-feedback"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card-footer d-flex justify-content-end py-6 px-9">
-                            <button type="submit" class="btn btn-primary" data-kt-news-add-action="submit">
-                                <span class="indicator-label">Update</span>
-                                <span class="indicator-progress">Please wait...
-                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-@endsection
-
 @push('styles')
-    <link href="{{ asset('assets/backend/css/ckCustom.css') }}" rel="stylesheet" type="text/css" />
+<style>
+    .ck-editor__editable_inline {
+        min-height: 600px;
+    }
+</style>
 @endpush
 
+@section('content')
+<div id="Content" class="relative flex flex-col flex-1 gap-6 p-6 pb-[30px] w-full shrink-0">
+    <div id="Header" class="flex items-center justify-between">
+        <div class="flex flex-col gap-2">
+            <div class="flex gap-1 items-center leading-5 text-desa-secondary">
+                <p class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize">Berita</p>
+                <span>/</span>
+                <p class="last-of-type:text-desa-dark-green last-of-type:font-semibold capitalize">Tambah Berita</p>
+            </div>
+            <h1 class="font-semibold text-2xl">Tambah Berita Baru</h1>
+        </div>
+    </div>
+    @if ($errors->any())
+    <div class="flex flex-col gap-2 p-4 rounded-2xl bg-desa-red/10">
+        @foreach ($errors->all() as $error)
+        <p class="font-medium text-desa-red">{{ $error }}</p>
+        @endforeach
+    </div>
+    @endif
+        <form action="{{ route('backend.news.update', $news->id) }}" method="POST" enctype="multipart/form-data" class="capitalize">
+            @csrf
+            @method('PUT')
+        <div class="shrink-0 rounded-3xl p-6 bg-white flex flex-col gap-6 h-fit">
+            <section id="Photos" class="flex justify-between">
+                <h2 class="font-medium leading-5 text-desa-secondary flex h-[100px] items-center w-[calc(424/904*100%)]">Thumbnail Berita</h2>
+                <div class="photo-input-container flex flex-col gap-6 flex-1">
+                    <div class="photo-form group/parent flex items-center justify-between">
+                        <div class="Photo-Preview flex items-center justify-center w-[120px] h-[100px] rounded-2xl overflow-hidden bg-desa-foreshadow">
+
+                            <img class="Photo size-full object-cover" src="{{ $news->image ? asset('storage/' . $news->image) : asset('assets/backend/images/thumbnails/thumbnail-bansos-preview.svg') }}"  alt="image" />
+                        </div>
+                        <div class="relative">
+                            <input type="file" name="image" accept="image/*" class="photo-input absolute opacity-0 left-0 top-0 size-0 -z-10" />
+                            <div class="action flex gap-3">
+                                <button type="button" class="Upload-btn relative flex items-center py-4 px-6 rounded-2xl bg-desa-black gap-[10px]">
+                                    <img src="{{ asset('assets/backend/images/icons/send-square-white.svg') }}" alt="icon" class="size-6 shrink-0" />
+                                    <p class="font-medium leading-5 text-white">Upload</p>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    @error('thumbnail')
+                    <p class="text-sm text-desa-red">{{ $message }}</p>
+                    @enderror
+                </div>
+            </section>
+            <hr class="border-desa-background" />
+            <section id="Judul-Berita" class="flex items-center justify-between">
+                <p class="font-medium leading-5 text-desa-secondary w-[calc(424/904*100%)]">Judul Berita</p>
+                <div class="flex flex-col gap-1 flex-1 shrink-0">
+                    <label class="relative group peer w-full">
+                        <input type="text" name="title" placeholder="Masukan Judul Berita"  value="{{ old('title', $news->title) }}" class="appearance-none outline-none w-full h-14 rounded-2xl ring-[1.5px] ring-desa-background focus:ring-desa-black py-4 px-12 gap-2 font-medium placeholder:text-desa-secondary transition-all duration-300">
+                        <div class="absolute transform -translate-y-1/2 top-1/2 left-4 flex size-6 shrink-0">
+                            <img src="{{ asset('assets/backend/images/icons/user-secondary-green.svg') }}" class="size-6 hidden group-has-[:placeholder-shown]:flex" alt="icon">
+                            <img src="{{ asset('assets/backend/images/icons/user-black.svg') }}" class="size-6 flex group-has-[:placeholder-shown]:hidden" alt="icon">
+                        </div>
+                        <img src="{{ asset('assets/backend/images/icons/Checklist-dark-green-fill.svg') }}" class="absolute transform -translate-y-1/2 top-1/2 right-4 size-6 shrink-0 hidden group-[.valid]:flex" alt="icon">
+                    </label>
+                    @error('name')
+                    <p class="text-sm text-desa-red">{{ $message }}</p>
+                    @enderror
+                </div>
+            </section>
+            <hr class="border-desa-background w-[calc(100%+48px)] -mx-6" />
+            <section id="Isi-Berita" class="flex flex-col gap-4">
+                <p class="font-medium leading-5">Isi Berita</p>
+                <div class="flex flex-col gap-1 flex-1 shrink-0">
+                    <textarea name="content" id="content-editor" class="w-full">{{ old('content', $news->content) }}</textarea>
+                    @error('content')
+                    <p class="text-sm text-desa-red">{{ $message }}</p>
+                    @enderror
+                </div>
+            </section>
+            <hr class="border-desa-background" />
+            <section id="Buttons" class="flex items-center justify-end gap-4">
+                <a href="{{ route('backend.news.index') }}" class="py-[18px] rounded-2xl bg-desa-red w-[180px] text-center flex justify-center font-medium text-white">Batal, Tidak jadi</a>
+                <button id="submitButton" type="submit" class="py-[18px] rounded-2xl bg-desa-dark-green w-[180px] text-center flex justify-center font-medium text-white transition-all duration-300">Update Now</button>
+            </section>
+        </div>
+    </form>
+</div>
+@endsection
+
 @push('scripts')
-<script src="{{ asset('assets/backend/plugins/custom/ckeditor/ckeditor-classic.bundle.js') }}"></script>
-<script src="{{ asset('assets/backend/js/custom/apps/news/edit.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/@ckeditor/ckeditor5-build-classic@41.4.2/build/ckeditor.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const uploadButton = document.querySelector('.Upload-btn');
+        const fileInput = document.querySelector('.photo-input');
+        const photoPreview = document.querySelector('.Photo');
+
+        uploadButton.addEventListener('click', function () {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', function (event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    photoPreview.src = e.target.result;
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+
+        ClassicEditor
+            .create(document.querySelector('#content-editor'), {
+                ckfinder: {
+                    uploadUrl: "{{ route('uploadCkeditorImage') . '?_token=' . csrf_token() }}",
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    });
+</script>
 @endpush

@@ -1,679 +1,650 @@
 @extends('frontend.layouts.app')
+
 @section('content')
-<div class="custom-banner-slider-container">
-    <div class="custom-slider-wrapper">
-        @foreach ($banner as $index => $banners)
-        <div class="custom-slider-item" style="background-image: url('{{ asset('storage/'. $banners->image) }}');">
-            <div class="overlay-fade-bottom"></div>
-            <div class="overlay-text-background"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 pb-xl-6 align-self-center text-center">
-                        <div class="banner-inner pe-xl-4 pb-5">
-                            <h6 class="bg-none text-white wow animated fadeInLeft mb-2" data-wow-duration="1.5s" data-wow-delay="0.3s">{{ $banners->subtitle ?? 'Selamat Datang Di Website' }}</h6>
-                            <h2 class="title text-white wow animated fadeInLeft" data-wow-duration="1.5s" data-wow-delay="0.4s">{{ $websiteName }}</h2>
-                            <p class="content text-white pe-xl-4 wow animated fadeInLeft" data-wow-duration="1.5s" data-wow-delay="0.5s">{{ $websiteDescription }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        @endforeach
-    </div>
-    <button class="slider-prev"><i class="fa fa-angle-left"></i></button>
-    <button class="slider-next"><i class="fa fa-angle-right"></i></button>
-    <div class="slider-dots"></div>
-</div>
-    <div class="about-area pd-top-120 pd-bottom-120">
-        <div class="container">
-            <div class="row">
-              <div class="col-lg-6 mb-4 mb-lg-0 wow animated fadeInLeft" data-wow-duration="1.5s" data-wow-delay="0.3s">
-                  <div class="about-thumb-inner">
-                      <img class="main-img top_image_bounce" src="{{ asset('storage/'. $about->image) }}" alt="img" style="height: 492px; width: auto;">
-                  </div>
-              </div>
-                <div class="col-lg-6 wow animated fadeInRight" data-wow-duration="1.5s" data-wow-delay="0.3s">
-                    <div class="section-title mb-0">
-                        <h6 class="sub-title">ABOUT US</h6>
-                        <h2 class="title">{{ $about->title }}</h2>
-                        {{-- <p class="content mb-4">You can access SaaS applications through a web browser or mobile app, as long as you have an internet connection.</p> --}}
-                        <p class="content">
-                          {!! $about->content !!}
-                        </p>
-                        <a class="btn btn-border-base" href="{{ route('about.index') }}">Discover More <i class="fa fa-plus"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-        <div class="work-process-area pd-top-120">
-        <div class="container">
-            <div class="section-title text-center pb-5">
-                <h6 class="sub-title">OUR SIMPLE PROCESS</h6>
-                <h2 class="title">World <span>Best Step</span> Our It Process</h2>
-            </div>
-            <div class="work-process-area-inner bg-gray border-radius-20">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-work-process-inner-2 text-center">
-                            <div class="thumb mb-3">
-                                <img src="{{ asset('assets/frontend/img/icon/20.svg') }}" alt="img">
-                                <p class="process-count">01</p>
-                            </div>
-                            <div class="details">
-                                <h5 class="mb-3">Requirements</h5>
-                                <p class="content">Research ipsum dolor sit consec tetur sed diam in the aliquam tempor</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-work-process-inner-2 text-center">
-                            <div class="thumb mb-3">
-                                <img src="{{ asset('assets/frontend/img/icon/21.svg') }}" alt="img">
-                                <p class="process-count">02</p>
-                            </div>
-                            <div class="details">
-                                <h5 class="mb-3">planning</h5>
-                                <p class="content">Create ipsum dolor sit consec tetur sed diam in the aliquam tempor</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-work-process-inner-2 text-center">
-                            <div class="thumb mb-3">
-                                <img src="{{ asset('assets/frontend/img/icon/22.svg') }}" alt="img">
-                                <p class="process-count">03</p>
-                            </div>
-                            <div class="details">
-                                <h5 class="mb-3">Implementation</h5>
-                                <p class="content">Develope ipsum dolor sit consec tetur sed diam in the aliquam tempor</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-work-process-inner-2 text-center">
-                            <div class="thumb mb-3">
-                                <img src="{{ asset('assets/frontend/img/icon/23.svg') }}" alt="img">
-                                <p class="process-count">04</p>
-                            </div>
-                            <div class="details">
-                                <h5 class="mb-3">Maintenance</h5>
-                                <p class="content">Shop ipsum dolor sit consec tetur Malesuada sed diam in the</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-<div class="testimonial-area pd-top-120 pd-bottom-90" style="background-image: url('{{ asset('assets/frontend/img/bg/11.png') }}');">
-     <div class="container">
-         <div class="section-title">
-             <h6 class="sub-title">TESTIMONIAL</h6>
-             <h2 class="title">Advanced Engine Services</h2>
-         </div>
-         <div class="testimonial-slider-1 owl-carousel slider-control-round slider-control-dots slider-control-right-top">
-             <div class="item">
-                 <div class="single-work-process-inner-2 text-center">
-                     <div class="thumb mb-3">
-                         <img src="{{ asset('assets/frontend/img/icon/20.svg') }}" alt="img">
-                         <p class="process-count">01</p>
-                     </div>
-                     <div class="details">
-                         <h5 class="mb-3">Requirements</h5>
-                         <p class="content">Research ipsum dolor sit consec tetur sed diam in the aliquam tempor</p>
-                         <a class="btn btn-base" href="#">Learn More</a>
-                     </div>
-                 </div>
-             </div>
-         </div>
-     </div>
- </div>
-    <div class="service-area bg-gray bg-relative pd-top-120 pd-bottom-90">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="section-title text-center">
-                        <h6 class="sub-title">ADVANCED SERVICES</h6>
-                        <h2 class="title">Optimize Your <span>Performance</span> With Saas</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-              @foreach ($service as $services)
-              <div class="col-lg-4 col-md-6">
-                  <div class="single-service-inner-2 text-center">
-                      <div class="thumb">
-                          <img src="{{ asset('storage/'. $services->image) }}" alt="img">
-                      </div>
-                      <div class="details">
-                          <div class="icon mb-3">
-                              <img src="{{ asset('assets/frontend/img/service/8.png') }}" alt="img">
-                          </div>
-                          <h5><a href="{{ route('service.index', Str::slug($services->title)) }}">{{ $services->title }}</a></h5>
-                          <p>SaaS stands for Software as a Service. It is a software</p>
-                      </div>
-                  </div>
-              </div>
-              @endforeach
-            </div>
-        </div>
-    </div>
-    <div class="work-process-area pd-top-120">
-        <div class="container">
-            <div class="section-title text-center pb-5">
-                <h6 class="sub-title">OUR SIMPLE PROCESS</h6>
-                <h2 class="title">World <span>Best Step</span> Our It Process</h2>
-            </div>
-            <div class="work-process-area-inner bg-gray border-radius-20">
-                <div class="row">
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-work-process-inner-2 text-center">
-                            <div class="thumb mb-3">
-                                <img src="{{ asset('assets/frontend/img/icon/20.svg') }}" alt="img">
-                                <p class="process-count">01</p>
-                            </div>
-                            <div class="details">
-                                <h5 class="mb-3">Requirements</h5>
-                                <p class="content">Research ipsum dolor sit consec tetur sed diam in the aliquam tempor</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-work-process-inner-2 text-center">
-                            <div class="thumb mb-3">
-                                <img src="{{ asset('assets/frontend/img/icon/21.svg') }}" alt="img">
-                                <p class="process-count">02</p>
-                            </div>
-                            <div class="details">
-                                <h5 class="mb-3">planning</h5>
-                                <p class="content">Create ipsum dolor sit consec tetur sed diam in the aliquam tempor</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-work-process-inner-2 text-center">
-                            <div class="thumb mb-3">
-                                <img src="{{ asset('assets/frontend/img/icon/22.svg') }}" alt="img">
-                                <p class="process-count">03</p>
-                            </div>
-                            <div class="details">
-                                <h5 class="mb-3">Implementation</h5>
-                                <p class="content">Develope ipsum dolor sit consec tetur sed diam in the aliquam tempor</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="single-work-process-inner-2 text-center">
-                            <div class="thumb mb-3">
-                                <img src="{{ asset('assets/frontend/img/icon/23.svg') }}" alt="img">
-                                <p class="process-count">04</p>
-                            </div>
-                            <div class="details">
-                                <h5 class="mb-3">Maintenance</h5>
-                                <p class="content">Shop ipsum dolor sit consec tetur Malesuada sed diam in the</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="testimonial-area pd-top-120 pd-bottom-90" style="background-image: url('{{ asset('assets/frontend/img/bg/11.png') }}');">
-        <div class="container">
-            <div class="section-title">
-                <h6 class="sub-title">TESTIMONIAL</h6>
-                <h2 class="title">Advanced Engine Services</h2>
-            </div>
-            <div class="testimonial-slider-1 owl-carousel slider-control-round slider-control-dots slider-control-right-top">
-                <div class="item">
-                    <div class="single-testimonial-inner style-1 text-center">
-                        <h5>Devon Lane</h5>
-                        <p class="designation mb-3">Marketing Coordinator</p>
-                        <div class="icon mb-2">
-                            <img src="{{ asset('assets/frontend/img/icon/25.png') }}" alt="img">
-                        </div>
-                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
-                        <div class="ratting-inner mt-4">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="thumb">
-                            <img src="{{ asset('assets/frontend/img/testimonial/1.png') }}" alt="img">
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="single-testimonial-inner style-1 text-center">
-                        <h5>Devon Lane</h5>
-                        <p class="designation mb-3">Marketing Coordinator</p>
-                        <div class="icon mb-2">
-                            <img src="{{ asset('assets/frontend/img/icon/25.png') }}" alt="img">
-                        </div>
-                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
-                        <div class="ratting-inner mt-4">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="thumb">
-                            <img src="{{ asset('assets/frontend/img/testimonial/2.png') }}" alt="img">
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="single-testimonial-inner style-1 text-center">
-                        <h5>Devon Lane</h5>
-                        <p class="designation mb-3">Marketing Coordinator</p>
-                        <div class="icon mb-2">
-                            <img src="{{ asset('assets/frontend/img/icon/25.png') }}" alt="img">
-                        </div>
-                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
-                        <div class="ratting-inner mt-4">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="thumb">
-                            <img src="{{ asset('assets/frontend/img/testimonial/3.png') }}" alt="img">
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="single-testimonial-inner style-1 text-center">
-                        <h5>Devon Lane</h5>
-                        <p class="designation mb-3">Marketing Coordinator</p>
-                        <div class="icon mb-2">
-                            <img src="{{ asset('assets/frontend/img/icon/25.png') }}" alt="img">
-                        </div>
-                        <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC</p>
-                        <div class="ratting-inner mt-4">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                        </div>
-                        <div class="thumb">
-                            <img src="{{ asset('assets/frontend/img/testimonial/1.png') }}" alt="img">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="blog-area pd-top-120 pd-bottom-90">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8">
-                    <div class="section-title text-center">
-                        <h6 class="sub-title">RECENT BLOG</h6>
-                        <h2 class="title">Discover a World of Sustainable Alternatives</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                @foreach ($news as $newsItem)
-                <div class="col-lg-4 col-md-6">
-                    <div class="single-blog-list style-2">
-                        <div class="thumb">
-                            <img src="{{ asset('storage/'. $newsItem->image) }}" alt="img">
-                        </div>
-                        <div class="details">
-                            <ul class="blog-meta">
-                                <li class="date">15 MAY</li>
-                                <li><i class="far fa-user"></i> By Admin</li>
-                            </ul>
-                            <h5 class="mb-3"><a href="{{ route('news.detail', Str::slug($newsItem->title)) }}">{{ $newsItem->title }}</a></h5>
-                            <a class="read-more-text" href="{{ route('news.detail', Str::slug($newsItem->title)) }}">Discover More <i class="fa fa-plus"></i></a>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-@endsection
-
-@push('style')
 <style>
-    .custom-banner-slider-container {
-        position: relative;
-        overflow: hidden;
+    /* Keyframes untuk animasi highlight */
+    @keyframes wipe-highlight {
+        /* Mulai dan Selesai dalam keadaan tersembunyi */
+        0%, 100% {
+            transform: scaleX(0);
+        }
+        /* Muncul dan bertahan */
+        20%, 80% {
+            transform: scaleX(1);
+        }
     }
 
-    .custom-slider-wrapper {
-        display: flex;
-        transition: transform 0.5s ease-in-out;
+    /* Class untuk span yang membungkus teks */
+    .animated-highlight {
+        position: relative; /* Diperlukan agar ::before bisa diposisikan */
+        display: inline-block;
+        color: #fff; /* Warna teks gelap agar kontras dengan highlight */
+        padding: 2px 6px;
     }
 
-    .custom-slider-item {
-        flex: 0 0 100%;
-        max-width: 100%;
-        height: 100vh;
-        background-size: cover !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        position: relative;
-        overflow: hidden;
-        transition: transform 6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        transform: scale(1);
-    }
-
-    .custom-slider-item.active {
-        transform: scale(1.05);
-    }
-
-    .custom-slider-item::before {
+    /* Elemen semu yang akan menjadi highlight kuning */
+    .animated-highlight::before {
         content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 0;
-    }
-
-    .overlay-fade-bottom {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 350px;
-        background: linear-gradient(to top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.8) 20%, rgba(255, 255, 255, 0) 100%);
-        pointer-events: none;
-        z-index: 1;
-    }
-
-    .overlay-text-background {
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.4);
-        z-index: 1;
-    }
+        background-color: rgb(0, 122, 255);
+        border-radius: 6px;
+        z-index: -1;
 
-    .custom-slider-item .container {
-        position: relative;
-        z-index: 2;
-    }
-
-    .custom-slider-item .banner-inner {
-        padding: 0 15px;
-    }
-
-    .custom-slider-item h6 {
-        font-size: 1.2em;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-bottom: 20px !important;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-        font-size: 1.5em;
-    }
-
-    .custom-slider-item h2 {
-        font-size: 3em;
-        margin-bottom: 20px;
-        line-height: 1.2;
-        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.9);
-        font-weight: bold;
-    }
-
-    .custom-slider-item p {
-        font-size: 1.1em;
-        margin-bottom: 30px;
-        line-height: 1.6;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-        font-size: 1.2em;
-        max-width: 80%;
-        margin: 0 auto 20px auto;
-    }
-
-    .custom-slider-item .btn {
-        padding: 12px 25px;
-        font-size: 1em;
-        border-radius: 5px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-
-    .slider-prev,
-    .slider-next {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background: rgba(0, 0, 0, 0.5);
-        color: white;
-        border: none;
-        padding: 15px;
-        cursor: pointer;
-        z-index: 10;
-        font-size: 1.5em;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background 0.3s ease;
-    }
-
-    .slider-prev:hover,
-    .slider-next:hover {
-        background: rgba(0, 0, 0, 0.8);
-    }
-
-    .slider-prev {
-        left: 20px;
-    }
-
-    .slider-next {
-        right: 20px;
-    }
-
-    .slider-dots {
-        position: absolute;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 10px;
-        z-index: 10;
-    }
-
-    .slider-dots .dot {
-        width: 10px;
-        height: 10px;
-        background: rgba(255, 255, 255, 0.5);
-        border-radius: 50%;
-        cursor: pointer;
-        transition: background 0.3s ease;
-    }
-
-    .slider-dots .dot.active {
-        background: white;
-    }
-
-    .custom-slider-item.active .wow.animated {
-        visibility: visible;
-        animation-name: none;
-    }
-
-    @keyframes fadeInLeft {
-        from {
-            opacity: 0;
-            transform: translateX(-20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    @media (max-width: 991px) {
-        .custom-slider-item {
-            height: 80vh;
-        }
-        .custom-slider-item h2 {
-            font-size: 2.5em;
-        }
-        .custom-slider-item p {
-            font-size: 1em;
-        }
-        .overlay-fade-bottom {
-            height: 250px;
-        }
-    }
-
-    @media (max-width: 767px) {
-        .custom-slider-item {
-            height: 70vh;
-        }
-        .custom-slider-item h2 {
-            font-size: 2em;
-        }
-        .custom-slider-item h6 {
-            font-size: 1em;
-        }
-        .custom-slider-item p {
-            font-size: 0.9em;
-        }
-        .slider-prev,
-        .slider-next {
-            padding: 10px;
-            width: 40px;
-            height: 40px;
-            font-size: 1.2em;
-        }
-        .slider-prev {
-            left: 10px;
-        }
-        .slider-next {
-            right: 10px;
-        }
-        .overlay-fade-bottom {
-            height: 200px;
-        }
+        transform-origin: left;
+        animation: wipe-highlight 10s ease-in-out infinite;
     }
 </style>
-@endpush
 
-@push('scripts')
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const sliderWrapper = document.querySelector('.custom-slider-wrapper');
-        const sliderItems = document.querySelectorAll('.custom-slider-item');
-        const prevButton = document.querySelector('.slider-prev');
-        const nextButton = document.querySelector('.slider-next');
-        const dotsContainer = document.querySelector('.slider-dots');
-        let currentIndex = 0;
-        let autoSlideInterval;
+<div id="header-hero" class="relative w-full h-screen">
+    <img src="{{ asset('assets/frontend/backgrounds/bupati.jpg') }}" class="absolute top-0 left-0 w-full h-full object-cover z-10" alt="banner">
+    <div class="absolute top-0 left-0 w-full h-full bg-black opacity-50 z-20"></div>
 
-        const totalItems = sliderItems.length;
+    <div class="container max-w-[1130px] mx-auto relative z-30 h-full flex items-center">
+        <div id="Hero" class="flex flex-col gap-[30px] w-full max-w-[536px]">
+            <div class="flex flex-col gap-[10px]">
+                <h1 class="font-extrabold text-[50px] leading-[65px] text-white">Selamat Datang Di Website <span class="animated-highlight">BalandeteKu</span></h1>
+                <p class="text-gray-200 leading-[30px]">{{ $websiteDescription }}.</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <a href="" class="bg-cp-dark-blue p-5 w-fit rounded-xl hover:shadow-[0_12px_30px_0_#312ECB66] transition-all duration-300 font-bold text-white">Profil Kami</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="absolute w-full lg:w-[43%] h-full top-0 right-0 overflow-hidden z-0">
+    <img src="{{ asset('assets/frontend/backgrounds/bupati.jpg') }}" class="object-cover w-full h-full" alt="banner">
+</div>
+</div>
 
-        for (let i = 0; i < totalItems; i++) {
-            const dot = document.createElement('span');
-            dot.classList.add('dot');
-            dot.dataset.index = i;
-            dotsContainer.appendChild(dot);
-            dot.addEventListener('click', () => {
-                goToSlide(i);
-            });
-        }
+{{-- Services Section --}}
+<div id="Services" class="container max-w-[1130px] mx-auto flex flex-wrap items-center justify-center gap-[30px] -mt-20 relative z-40">
+    <a href="#" class="card w-[356.67px] flex flex-col items-center p-[30px] rounded-[20px] bg-white border border-[#E8EAF2] hover:border-cp-dark-blue transition-all duration-300 transform hover:-translate-y-2">
+        <div class="w-[70px] h-[70px] flex shrink-0 items-center justify-center rounded-full bg-cp-pale-blue mb-5">
+            <img src="{{ asset('assets/frontend/icons/document-text.svg') }}" alt="icon" class="w-1/2 h-1/2 object-contain">
+        </div>
+        <h3 class="font-bold text-xl leading-[30px] mb-2">Layanan Surat</h3>
+        <p class="text-center text-cp-light-grey leading-[24px]">Mempermudah masyarakat dalam mengurus surat-surat penting.</p>
+    </a>
+    <a href="#" class="card w-[356.67px] flex flex-col items-center p-[30px] rounded-[20px] bg-white border border-[#E8EAF2] hover:border-cp-dark-blue transition-all duration-300 transform hover:-translate-y-2">
+        <div class="w-[70px] h-[70px] flex shrink-0 items-center justify-center rounded-full bg-cp-pale-blue mb-5">
+            <img src="{{ asset('assets/frontend/icons/people.svg') }}" alt="icon" class="w-1/2 h-1/2 object-contain">
+        </div>
+        <h3 class="font-bold text-xl leading-[30px] mb-2">Informasi Penduduk</h3>
+        <p class="text-center text-cp-light-grey leading-[24px]">Menyediakan data dan statistik terkini mengenai kependudukan.</p>
+    </a>
+    <a href="#" class="card w-[356.67px] flex flex-col items-center p-[30px] rounded-[20px] bg-white border border-[#E8EAF2] hover:border-cp-dark-blue transition-all duration-300 transform hover:-translate-y-2">
+        <div class="w-[70px] h-[70px] flex shrink-0 items-center justify-center rounded-full bg-cp-pale-blue mb-5">
+            <img src="{{ asset('assets/frontend/icons/map.svg') }}" alt="icon" class="w-1/2 h-1/2 object-contain">
+        </div>
+        <h3 class="font-bold text-xl leading-[30px] mb-2">Peta Wilayah</h3>
+        <p class="text-center text-cp-light-grey leading-[24px]">Peta interaktif untuk memudahkan navigasi di area kelurahan.</p>
+    </a>
+</div>
+{{-- End Services Section --}}
 
-        const dots = document.querySelectorAll('.slider-dots .dot');
+<div id="OurPrinciples" class="container max-w-[1130px] mx-auto flex flex-col gap-[30px] mt-20">
+    <div class="flex items-center justify-between">
+        <div class="flex flex-col gap-[14px]">
+            <p class="badge w-fit bg-cp-pale-blue text-cp-light-blue p-[8px_16px] rounded-full uppercase font-bold text-sm">INFORMASI KELURAHAN</p>
+            <h2 class="font-bold text-4xl leading-[45px]">Informasi Terbaru Dari <br> Kelurahan Balandete</h2>
+        </div>
+        <a href="" class="bg-cp-black p-[14px_20px] w-fit rounded-xl font-bold text-white">Explore More</a>
+    </div>
+    <div class="flex flex-wrap items-center justify-center gap-[30px]">
+        @foreach ($news as $newsItem)
+        <a href="{{ route('news.detail', Str::slug($newsItem->title)) }}" class="group card w-full sm:w-[356.67px] flex flex-col bg-white border border-[#E8EAF2] rounded-[20px] shadow-sm hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 overflow-hidden">
+            <div class="thumbnail h-[200px] w-full overflow-hidden">
+                <img src="{{ asset('storage/'. $newsItem->image) }}" class="object-cover object-center w-full h-full group-hover:scale-110 transition-transform duration-500" alt="thumbnail berita">
+            </div>
+            <div class="flex flex-col p-[20px] sm:p-[30px] gap-4 sm:gap-5 flex-1">
+                <h3 class="font-bold text-lg sm:text-xl leading-tight text-gray-900 group-hover:text-cp-dark-blue transition-colors duration-300">
+                    {{ $newsItem->title }}
+                </h3>
+                <div class="flex items-center gap-2 text-sm text-gray-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M8 2v4"></path>
+                        <path d="M16 2v4"></path>
+                        <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                        <path d="M3 10h18"></path>
+                    </svg>
+                    <span>{{ \Carbon\Carbon::parse($newsItem->created_at)->translatedFormat('d F Y') }}</span>
+                </div>
+                <p class="text-sm sm:text-base leading-snug text-gray-500">
+                    {{ \Illuminate\Support\Str::limit(strip_tags($newsItem->content), 80, '...') }}
+                </p>
+                <div class="mt-auto pt-2">
+                    <span class="font-semibold text-cp-dark-blue group-hover:underline text-sm sm:text-base transition-colors duration-300">
+                        Lihat Selengkapnya &rarr;
+                    </span>
+                </div>
+            </div>
+        </a>
+        @endforeach
+    </div>
+</div>
+<div id="Stats" class="bg-cp-black w-full mt-20">
+    <div class="container max-w-[1000px] mx-auto py-10">
+        <div class="flex flex-wrap items-center justify-between p-[10px]">
+            <div class="card w-[200px] flex flex-col items-center gap-[10px] text-center">
+                <div class="w-[55px] h-[55px] flex shrink-0 overflow-hidden">
+                    <img src="{{ asset('assets/frontend/icons/cup.svg') }}" class="object-contain w-full h-full" alt="icon">
+                </div>
+                <p class="text-cp-pale-orange font-bold text-4xl leading-[54px]">189.409</p>
+                <p class="text-cp-light-grey">Award-winning Buildings</p>
+            </div>
+            <div class="card w-[200px] flex flex-col items-center gap-[10px] text-center">
+                <div class="w-[55px] h-[55px] flex shrink-0 overflow-hidden">
+                    <img src="{{ asset('assets/frontend/icons/buildings.svg') }}" class="object-contain w-full h-full" alt="icon">
+                </div>
+                <p class="text-cp-pale-orange font-bold text-4xl leading-[54px]">198</p>
+                <p class="text-cp-light-grey">HQ Worldwide</p>
+            </div>
+            <div class="card w-[200px] flex flex-col items-center gap-[10px] text-center">
+                <div class="w-[55px] h-[55px] flex shrink-0 overflow-hidden">
+                    <img src="{{ asset('assets/frontend/icons/status-up.svg') }}" class="object-contain w-full h-full" alt="icon">
+                </div>
+                <p class="text-cp-pale-orange font-bold text-4xl leading-[54px]">$512bn</p>
+                <p class="text-cp-light-grey">Success Investments</p>
+            </div>
+            <div class="card w-[200px] flex flex-col items-center gap-[10px] text-center">
+                <div class="w-[55px] h-[55px] flex shrink-0 overflow-hidden">
+                    <img src="{{ asset('assets/frontend/icons/star.svg') }}" class="object-contain w-full h-full" alt="icon">
+                </div>
+                <p class="text-cp-pale-orange font-bold text-4xl leading-[54px]">4.9/5</p>
+                <p class="text-cp-light-grey">Honest Reviews</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="Products" class="container max-w-[1130px] mx-auto flex flex-col gap-20 mt-20">
+    <div class="product flex flex-wrap justify-center items-center gap-[60px] even:flex-row-reverse">
+        <div class="w-[470px] h-[550px] flex shrink-0 overflow-hidden">
+            <img src="{{ asset('assets/frontend/thumbnails/product cover one.png') }}" class="w-full h-full object-contain" alt="thumbnail">
+        </div>
+        <div class="flex flex-col gap-[30px] py-[50px] h-fit max-w-[500px]">
+            <p class="badge w-fit bg-cp-pale-blue text-cp-light-blue p-[8px_16px] rounded-full uppercase font-bold text-sm">WORLD TRADE CENTER</p>
+            <div class="flex flex-col gap-[10px]">
+                <h2 class="font-bold text-4xl leading-[45px]">Office Integrated with Biggest Data Server Center</h2>
+                <p class="leading-[30px] text-cp-light-grey">Lorem ipsum angga’s framework researching amet dolor metrics and perfomance burning rate random says.</p>
+            </div>
+            <a href="" class="bg-cp-dark-blue p-[14px_20px] w-fit rounded-xl hover:shadow-[0_12px_30px_0_#312ECB66] transition-all duration-300 font-bold text-white">Book Appointment</a>
+        </div>
+    </div>
+    <div class="product flex flex-wrap justify-center items-center gap-[60px] even:flex-row-reverse">
+        <div class="w-[470px] h-[550px] flex shrink-0 overflow-hidden">
+            <img src="{{ asset('assets/frontend/thumbnails/product cover two.png') }}" class="w-full h-full object-contain" alt="thumbnail">
+        </div>
+        <div class="flex flex-col gap-[30px] py-[50px] h-fit max-w-[500px]">
+            <p class="badge w-fit bg-cp-pale-blue text-cp-light-blue p-[8px_16px] rounded-full uppercase font-bold text-sm">FAMILY HARMONY</p>
+            <div class="flex flex-col gap-[10px]">
+                <h2 class="font-bold text-4xl leading-[45px]">Beautiful Theme Park Family and Kids Friendly</h2>
+                <p class="leading-[30px] text-cp-light-grey">Lorem ipsum angga’s framework researching amet dolor metrics and perfomance burning rate random says.</p>
+            </div>
+            <a href="" class="bg-cp-dark-blue p-[14px_20px] w-fit rounded-xl hover:shadow-[0_12px_30px_0_#312ECB66] transition-all duration-300 font-bold text-white">Book Appointment</a>
+        </div>
+    </div>
+    <div class="product flex flex-wrap justify-center items-center gap-[60px] even:flex-row-reverse">
+        <div class="w-[470px] h-[550px] flex shrink-0 overflow-hidden">
+            <img src="{{ asset('assets/frontend/thumbnails/product cover three.png') }}" class="w-full h-full object-contain" alt="thumbnail">
+        </div>
+        <div class="flex flex-col gap-[30px] py-[50px] h-fit max-w-[500px]">
+            <p class="badge w-fit bg-cp-pale-blue text-cp-light-blue p-[8px_16px] rounded-full uppercase font-bold text-sm">ECO-FRIENDLY SPACE</p>
+            <div class="flex flex-col gap-[10px]">
+                <h2 class="font-bold text-4xl leading-[45px]">Public City Center Park with Super Mall & Airport</h2>
+                <p class="leading-[30px] text-cp-light-grey">Lorem ipsum angga’s framework researching amet dolor metrics and perfomance burning rate random says.</p>
+            </div>
+            <a href="" class="bg-cp-dark-blue p-[14px_20px] w-fit rounded-xl hover:shadow-[0_12px_30px_0_#312ECB66] transition-all duration-300 font-bold text-white">Book Appointment</a>
+        </div>
+    </div>
+</div>
+<div id="Teams" class="bg-[#F6F7FA] w-full py-20 px-[10px] mt-20">
+    <div class="container max-w-[1130px] mx-auto flex flex-col gap-[30px] items-center">
+        <div class="flex flex-col gap-[14px] items-center">
+            <p class="badge w-fit bg-cp-light-blue text-white p-[8px_16px] rounded-full uppercase font-bold text-sm">OUR POWERFUL TEAM</p>
+            <h2 class="font-bold text-4xl leading-[45px] text-center">We Share Same Dreams <br> Change The World</h2>
+        </div>
+        <div class="teams-card-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[30px] justify-center">
+            <div class="card bg-white flex flex-col h-full justify-center items-center p-[30px] px-[29px] gap-[30px] rounded-[20px] border border-white hover:shadow-[0_10px_30px_0_#D1D4DF80] hover:border-cp-dark-blue transition-all duration-300">
+                <div class="w-[100px] h-[100px] flex shrink-0 items-center justify-center rounded-full bg-[linear-gradient(150.55deg,_#007AFF_8.72%,_#312ECB_87.11%)]">
+                    <div class="w-[90px] h-[90px] rounded-full overflow-hidden">
+                        <img src="{{ asset('assets/frontend/photos/photo1.png') }}" class="object-cover w-full h-full object-center" alt="photo">
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1 text-center">
+                    <p class="font-bold text-xl leading-[30px]">Angga Setiawan</p>
+                    <p class="text-cp-light-grey">Chief Executive Officer</p>
+                </div>
+                <div class="flex items-center justify-center gap-[10px]">
+                    <div class="w-6 h-6 flex shrink-0">
+                        <img src="{{ asset('assets/frontend/icons/global.svg') }}" alt="icon">
+                    </div>
+                    <p class="text-cp-dark-blue font-semibold">Shanghai, China</p>
+                </div>
+            </div>
+            <div class="card bg-white flex flex-col h-full justify-center items-center p-[30px] px-[29px] gap-[30px] rounded-[20px] border border-white hover:shadow-[0_10px_30px_0_#D1D4DF80] hover:border-cp-dark-blue transition-all duration-300">
+                <div class="w-[100px] h-[100px] flex shrink-0 items-center justify-center rounded-full bg-[linear-gradient(150.55deg,_#007AFF_8.72%,_#312ECB_87.11%)]">
+                    <div class="w-[90px] h-[90px] rounded-full overflow-hidden">
+                        <img src="{{ asset('assets/frontend/photos/photo2.png') }}" class="object-cover w-full h-full object-center" alt="photo">
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1 text-center">
+                    <p class="font-bold text-xl leading-[30px]">Shayna Liza</p>
+                    <p class="text-cp-light-grey">Product Manager</p>
+                </div>
+                <div class="flex items-center justify-center gap-[10px]">
+                    <div class="w-6 h-6 flex shrink-0">
+                        <img src="{{ asset('assets/frontend/icons/global.svg') }}" alt="icon">
+                    </div>
+                    <p class="text-cp-dark-blue font-semibold">Bali, Indonesia</p>
+                </div>
+            </div>
+            <div class="card bg-white flex flex-col h-full justify-center items-center p-[30px] px-[29px] gap-[30px] rounded-[20px] border border-white hover:shadow-[0_10px_30px_0_#D1D4DF80] hover:border-cp-dark-blue transition-all duration-300">
+                <div class="w-[100px] h-[100px] flex shrink-0 items-center justify-center rounded-full bg-[linear-gradient(150.55deg,_#007AFF_8.72%,_#312ECB_87.11%)]">
+                    <div class="w-[90px] h-[90px] rounded-full overflow-hidden">
+                        <img src="{{ asset('assets/frontend/photos/photo3.png') }}" class="object-cover w-full h-full object-center" alt="photo">
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1 text-center">
+                    <p class="font-bold text-xl leading-[30px]">Bruno Oleo</p>
+                    <p class="text-cp-light-grey">Customer Relations</p>
+                </div>
+                <div class="flex items-center justify-center gap-[10px]">
+                    <div class="w-6 h-6 flex shrink-0">
+                        <img src="{{ asset('assets/frontend/icons/global.svg') }}" alt="icon">
+                    </div>
+                    <p class="text-cp-dark-blue font-semibold">Orchard, Singapore</p>
+                </div>
+            </div>
+            <div class="card bg-white flex flex-col h-full justify-center items-center p-[30px] px-[29px] gap-[30px] rounded-[20px] border border-white hover:shadow-[0_10px_30px_0_#D1D4DF80] hover:border-cp-dark-blue transition-all duration-300">
+                <div class="w-[100px] h-[100px] flex shrink-0 items-center justify-center rounded-full bg-[linear-gradient(150.55deg,_#007AFF_8.72%,_#312ECB_87.11%)]">
+                    <div class="w-[90px] h-[90px] rounded-full overflow-hidden">
+                        <img src="{{ asset('assets/frontend/photos/photo4.png') }}" class="object-cover w-full h-full object-center" alt="photo">
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1 text-center">
+                    <p class="font-bold text-xl leading-[30px]">Sami Kimi</p>
+                    <p class="text-cp-light-grey">Senior 3D Designer</p>
+                </div>
+                <div class="flex items-center justify-center gap-[10px]">
+                    <div class="w-6 h-6 flex shrink-0">
+                        <img src="{{ asset('assets/frontend/icons/global.svg') }}" alt="icon">
+                    </div>
+                    <p class="text-cp-dark-blue font-semibold">Ho Chi Min, Vietnam</p>
+                </div>
+            </div>
+            <div class="card bg-white flex flex-col h-full justify-center items-center p-[30px] px-[29px] gap-[30px] rounded-[20px] border border-white hover:shadow-[0_10px_30px_0_#D1D4DF80] hover:border-cp-dark-blue transition-all duration-300">
+                <div class="w-[100px] h-[100px] flex shrink-0 items-center justify-center rounded-full bg-[linear-gradient(150.55deg,_#007AFF_8.72%,_#312ECB_87.11%)]">
+                    <div class="w-[90px] h-[90px] rounded-full overflow-hidden">
+                        <img src="{{ asset('assets/frontend/photos/photo5.png') }}" class="object-cover w-full h-full object-center" alt="photo">
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1 text-center">
+                    <p class="font-bold text-xl leading-[30px]">Wibowo Putra</p>
+                    <p class="text-cp-light-grey">Senior 3D Designer</p>
+                </div>
+                <div class="flex items-center justify-center gap-[10px]">
+                    <div class="w-6 h-6 flex shrink-0">
+                        <img src="{{ asset('assets/frontend/icons/global.svg') }}" alt="icon">
+                    </div>
+                    <p class="text-cp-dark-blue font-semibold">Ho Chi Min, Vietnam</p>
+                </div>
+            </div>
+            <div class="card bg-white flex flex-col h-full justify-center items-center p-[30px] px-[29px] gap-[30px] rounded-[20px] border border-white hover:shadow-[0_10px_30px_0_#D1D4DF80] hover:border-cp-dark-blue transition-all duration-300">
+                <div class="w-[100px] h-[100px] flex shrink-0 items-center justify-center rounded-full bg-[linear-gradient(150.55deg,_#007AFF_8.72%,_#312ECB_87.11%)]">
+                    <div class="w-[90px] h-[90px] rounded-full overflow-hidden">
+                        <img src="{{ asset('assets/frontend/photos/photo6.png') }}" class="object-cover w-full h-full object-center" alt="photo">
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1 text-center">
+                    <p class="font-bold text-xl leading-[30px]">Putri Emily</p>
+                    <p class="text-cp-light-grey">Chief Executive Officer</p>
+                </div>
+                <div class="flex items-center justify-center gap-[10px]">
+                    <div class="w-6 h-6 flex shrink-0">
+                        <img src="{{ asset('assets/frontend/icons/global.svg') }}" alt="icon">
+                    </div>
+                    <p class="text-cp-dark-blue font-semibold">Shanghai, China</p>
+                </div>
+            </div>
+            <div class="card bg-white flex flex-col h-full justify-center items-center p-[30px] px-[29px] gap-[30px] rounded-[20px] border border-white hover:shadow-[0_10px_30px_0_#D1D4DF80] hover:border-cp-dark-blue transition-all duration-300">
+                <div class="w-[100px] h-[100px] flex shrink-0 items-center justify-center rounded-full bg-[linear-gradient(150.55deg,_#007AFF_8.72%,_#312ECB_87.11%)]">
+                    <div class="w-[90px] h-[90px] rounded-full overflow-hidden">
+                        <img src="{{ asset('assets/frontend/photos/photo7.png') }}" class="object-cover w-full h-full object-center" alt="photo">
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1 text-center">
+                    <p class="font-bold text-xl leading-[30px]">Yuyan Chin</p>
+                    <p class="text-cp-light-grey">Product Manager</p>
+                </div>
+                <div class="flex items-center justify-center gap-[10px]">
+                    <div class="w-6 h-6 flex shrink-0">
+                        <img src="{{ asset('assets/frontend/icons/global.svg') }}" alt="icon">
+                    </div>
+                    <p class="text-cp-dark-blue font-semibold">Bali, Indonesia</p>
+                </div>
+            </div>
+            <a href="team.html" class="view-all-card">
+                <div class="card bg-white flex flex-col h-full justify-center items-center p-[30px] gap-[30px] rounded-[20px] border border-white hover:shadow-[0_10px_30px_0_#D1D4DF80] hover:border-cp-dark-blue transition-all duration-300">
+                    <div class="w-[60px] h-[60px] flex shrink-0">
+                        <img src="{{ asset('assets/frontend/icons/profile-2user.svg') }}" alt="icon">
+                    </div>
+                    <div class="flex flex-col gap-1 text-center">
+                        <p class="font-bold text-xl leading-[30px]">View All</p>
+                        <p class="text-cp-light-grey">Our Great People</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+<div id="Testimonials" class="w-full flex flex-col gap-[50px] items-center mt-20">
+    <div class="flex flex-col gap-[14px] items-center">
+        <p class="badge w-fit bg-cp-pale-blue text-cp-light-blue p-[8px_16px] rounded-full uppercase font-bold text-sm">SUCCESS CLIENTS</p>
+        <h2 class="font-bold text-4xl leading-[45px] text-center">Our Satisfied Clients<br>From Worldwide Company</h2>
+    </div>
+    <div class="main-carousel w-full">
+        <div class="carousel-card container max-w-[1130px] w-full flex flex-wrap justify-between items-center lg:mx-[calc((100vw-1130px)/2)]">
+            <div class="testimonial-container flex flex-col gap-[112px] w-[565px]">
+                <div class="flex flex-col gap-[30px]">
+                    <div class="h-9 overflow-hidden">
+                        <img src="{{ asset('assets/frontend/logo/logo-54.svg') }}" class="object-contain" alt="icon">
+                    </div>
+                    <div class="relative pt-[27px] pl-[30px]">
+                        <div class="absolute top-0 left-0">
+                            <img src="{{ asset('assets/frontend/icons/quote.svg') }}" alt="icon">
+                        </div>
+                        <p class="font-semibold text-2xl leading-[46px] relative z-10">Shayna is a leading construction company in Melbourne, building new homes and commercial projects that are durable, functional and beautiful.</p>
+                    </div>
+                    <div class="flex items-center justify-between pl-[30px]">
+                        <div class="flex items-center gap-6">
+                            <div class="w-[60px] h-[60px] flex shrink-0 rounded-full overflow-hidden">
+                                <img src="{{ asset('assets/frontend/photos/photo3.png') }}" class="w-full h-full object-cover" alt="photo">
+                            </div>
+                            <div class="flex flex-col justify-center gap-1">
+                                <p class="font-bold">Sirania</p>
+                                <p class="text-sm text-cp-light-grey">CRO Kamikapan</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-nowrap">
+                            <div class="w-6 h-6 flex shrink-0">
+                                <img src="{{ asset('assets/frontend/icons/Star-rating.svg') }}" alt="star">
+                            </div>
+                            <div class="w-6 h-6 flex shrink-0">
+                                <img src="{{ asset('assets/frontend/icons/Star-rating.svg') }}" alt="star">
+                            </div>
+                            <div class="w-6 h-6 flex shrink-0">
+                                <img src="{{ asset('assets/frontend/icons/Star-rating.svg') }}" alt="star">
+                            </div>
+                            <div class="w-6 h-6 flex shrink-0">
+                                <img src="{{ asset('assets/frontend/icons/Star-rating.svg') }}" alt="star">
+                            </div>
+                            <div class="w-6 h-6 flex shrink-0">
+                                <img src="{{ asset('assets/frontend/icons/Star-rating.svg') }}" alt="star">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-indicator flex items-center justify-center gap-2 h-4 shrink-0">
+                </div>
+            </div>
+            <div class="testimonial-thumbnail w-[470px] h-[550px] rounded-[20px] overflow-hidden bg-[#D9D9D9]">
+                <img src="{{ asset('assets/frontend/backgrounds/banner.jpg') }}" class="w-full h-full object-cover object-center" alt="thumbnail">
+            </div>
+        </div>
+        <div class="carousel-card container max-w-[1130px] w-full flex flex-wrap justify-between items-center lg:mx-[calc((100vw-1130px)/2)]">
+            <div class="testimonial-container flex flex-col gap-[112px] w-[565px]">
+                <div class="flex flex-col gap-[30px]">
+                    <div class="h-9 overflow-hidden">
+                        <img src="{{ asset('assets/frontend/logo/logo-51.svg') }}" class="object-contain" alt="icon">
+                    </div>
+                    <div class="relative pt-[27px] pl-[30px]">
+                        <div class="absolute top-0 left-0">
+                            <img src="{{ asset('assets/frontend/icons/quote.svg') }}" alt="icon">
+                        </div>
+                        <p class="font-semibold text-2xl leading-[46px] relative z-10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil distinctio quasi blanditiis dolorum iste velit. Quo alias non ab debitis!</p>
+                    </div>
+                    <div class="flex items-center justify-between pl-[30px]">
+                        <div class="flex items-center gap-6">
+                            <div class="w-[60px] h-[60px] flex shrink-0 rounded-full overflow-hidden">
+                                <img src="{{ asset('assets/frontend/photos/photo2.png') }}" class="w-full h-full object-cover" alt="photo">
+                            </div>
+                            <div class="flex flex-col justify-center gap-1">
+                                <p class="font-bold">Bruno Oleo</p>
+                                <p class="text-sm text-cp-light-grey">Customer Relations</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-nowrap">
+                            <div class="w-6 h-6 flex shrink-0">
+                                <img src="{{ asset('assets/frontend/icons/Star-rating.svg') }}" alt="star">
+                            </div>
+                            <div class="w-6 h-6 flex shrink-0">
+                                <img src="{{ asset('assets/frontend/icons/Star-rating.svg') }}" alt="star">
+                            </div>
+                            <div class="w-6 h-6 flex shrink-0">
+                                <img src="{{ asset('assets/frontend/icons/Star-rating.svg') }}" alt="star">
+                            </div>
+                            <div class="w-6 h-6 flex shrink-0">
+                                <img src="{{ asset('assets/frontend/icons/Star-rating.svg') }}" alt="star">
+                            </div>
+                            <div class="w-6 h-6 flex shrink-0">
+                                <img src="{{ asset('assets/frontend/icons/Star-rating.svg') }}" alt="star">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-indicator flex items-center justify-center gap-2 h-4 shrink-0">
+                </div>
+            </div>
+            <div class="testimonial-thumbnail w-[470px] h-[550px] rounded-[20px] overflow-hidden bg-[#D9D9D9]">
+                <img src="{{ asset('assets/frontend/thumbnails/cover1.jpg') }}" class="w-full h-full object-cover object-center" alt="thumbnail">
+            </div>
+        </div>
+        <div class="carousel-card container max-w-[1130px] w-full flex flex-wrap justify-between items-center lg:mx-[calc((100vw-1130px)/2)]">
+            <div class="testimonial-container flex flex-col gap-[112px] w-[565px]">
+                <div class="flex flex-col gap-[30px]">
+                    <div class="h-9 overflow-hidden">
+                        <img src="{{ asset('assets/frontend/logo/logo-54.svg') }}" class="object-contain" alt="icon">
+                    </div>
+                    <div class="relative pt-[27px] pl-[30px]">
+                        <div class="absolute top-0 left-0">
+                            <img src="{{ asset('assets/frontend/icons/quote.svg') }}" alt="icon">
+                        </div>
+                        <p class="font-semibold text-2xl leading-[46px] relative z-10">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio officia, reprehenderit magni obcaecati praesentium quasi iusto rerum.</p>
+                    </div>
+                    <div class="flex items-center justify-between pl-[30px]">
+                        <div class="flex items-center gap-6">
+                            <div class="w-[60px] h-[60px] flex shrink-0 rounded-full overflow-hidden">
+                                <img src="{{ asset('assets/frontend/photos/photo4.png') }}" class="w-full h-full object-cover" alt="photo">
+                            </div>
+                            <div class="flex flex-col justify-center gap-1">
+                                <p class="font-bold">Sami Kimi</p>
+                                <p class="text-sm text-cp-light-grey">Senior 3D Designer</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-nowrap">
+                            <div class="w-6 h-6 flex shrink-0">
+                                <img src="{{ asset('assets/frontend/icons/Star-rating.svg') }}" alt="star">
+                            </div>
+                            <div class="w-6 h-6 flex shrink-0">
+                                <img src="{{ asset('assets/frontend/icons/Star-rating.svg') }}" alt="star">
+                            </div>
+                            <div class="w-6 h-6 flex shrink-0">
+                                <img src="{{ asset('assets/frontend/icons/Star-rating.svg') }}" alt="star">
+                            </div>
+                            <div class="w-6 h-6 flex shrink-0">
+                                <img src="{{ asset('assets/frontend/icons/Star-rating.svg') }}" alt="star">
+                            </div>
+                            <div class="w-6 h-6 flex shrink-0">
+                                <img src="{{ asset('assets/frontend/icons/Star-rating.svg') }}" alt="star">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-indicator flex items-center justify-center gap-2 h-4 shrink-0">
+                </div>
+            </div>
+            <div class="testimonial-thumbnail w-[470px] h-[550px] rounded-[20px] overflow-hidden bg-[#D9D9D9]">
+                <img src="{{ asset('assets/frontend/thumbnails/cover2.jpg') }}" class="w-full h-full object-cover object-center" alt="thumbnail">
+            </div>
+        </div>
+        <div class="carousel-card container max-w-[1130px] w-full flex flex-wrap justify-between items-center lg:mx-[calc((100vw-1130px)/2)]">
+            <div class="testimonial-container flex flex-col gap-[112px] w-[565px]">
+                <div class="flex flex-col gap-[30px]">
+                    <div class="h-9 overflow-hidden">
+                        <img src="{{ asset('assets/frontend/logo/logo-44.svg') }}" class="object-contain" alt="icon">
+                    </div>
+                    <div class="relative pt-[27px] pl-[30px]">
+                        <div class="absolute top-0 left-0">
+                            <img src="{{ asset('assets/frontend/icons/quote.svg') }}" alt="icon">
+                        </div>
+                        <p class="font-semibold text-2xl leading-[46px] relative z-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, rem!</p>
+                    </div>
+                    <div class="flex items-center justify-between pl-[30px]">
+                        <div class="flex items-center gap-6">
+                            <div class="w-[60px] h-[60px] flex shrink-0 rounded-full overflow-hidden">
+                                <img src="{{ asset('assets/frontend/photos/photo7.png') }}" class="w-full h-full object-cover" alt="photo">
+                            </div>
+                            <div class="flex flex-col justify-center gap-1">
+                                <p class="font-bold">Yuyan Chin</p>
+                                <p class="text-sm text-cp-light-grey">Product Manager</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-nowrap">
+                            <div class="w-6 h-6 flex shrink-0">
+                                <img src="{{ asset('assets/frontend/icons/Star-rating.svg') }}" alt="star">
+                            </div>
+                            <div class="w-6 h-6 flex shrink-0">
+                                <img src="{{ asset('assets/frontend/icons/Star-rating.svg') }}" alt="star">
+                            </div>
+                            <div class="w-6 h-6 flex shrink-0">
+                                <img src="{{ asset('assets/frontend/icons/Star-rating.svg') }}" alt="star">
+                            </div>
+                            <div class="w-6 h-6 flex shrink-0">
+                                <img src="{{ asset('assets/frontend/icons/Star-rating.svg') }}" alt="star">
+                            </div>
+                            <div class="w-6 h-6 flex shrink-0">
+                                <img src="{{ asset('assets/frontend/icons/Star-rating.svg') }}" alt="star">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-indicator flex items-center justify-center gap-2 h-4 shrink-0">
+                </div>
+            </div>
+            <div class="testimonial-thumbnail w-[470px] h-[550px] rounded-[20px] overflow-hidden bg-[#D9D9D9]">
+                <img src="{{ asset('assets/frontend/thumbnails/cover3.jpg') }}" class="w-full h-full object-cover object-center" alt="thumbnail">
+            </div>
+        </div>
+    </div>
+</div>
+<div id="Awards" class="container max-w-[1130px] mx-auto flex flex-col gap-[30px] mt-20">
+    <div class="flex items-center justify-between">
+        <div class="flex flex-col gap-[14px]">
+            <p class="badge w-fit bg-cp-pale-blue text-cp-light-blue p-[8px_16px] rounded-full uppercase font-bold text-sm">OUR AWARDS</p>
+            <h2 class="font-bold text-4xl leading-[45px]">We’ve Dedicated Our<br>Best Team Efforts</h2>
+        </div>
+        <a href="" class="bg-cp-black p-[14px_20px] w-fit rounded-xl font-bold text-white">Explore More</a>
+    </div>
+    <div class="awards-card-container grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[30px] justify-center">
+        <div class="card bg-white flex flex-col h-full p-[30px] gap-[30px] rounded-[20px] border border-[#E8EAF2] hover:border-cp-dark-blue transition-all duration-300">
+            <div class="w-[55px] h-[55px] flex shrink-0">
+                <img src="{{ asset('assets/frontend/icons/cup-blue.svg') }}" alt="icon">
+            </div>
+            <hr class="border-[#E8EAF2]">
+            <p class="font-bold text-xl leading-[30px]">Solid Fundamental Crafter Async</p>
+            <hr class="border-[#E8EAF2]">
+            <p class="text-cp-light-grey">Bali, 2020</p>
+        </div>
+        <div class="card bg-white flex flex-col h-full p-[30px] gap-[30px] rounded-[20px] border border-[#E8EAF2] hover:border-cp-dark-blue transition-all duration-300">
+            <div class="w-[55px] h-[55px] flex shrink-0">
+                <img src="{{ asset('assets/frontend/icons/cup-blue.svg') }}" alt="icon">
+            </div>
+            <hr class="border-[#E8EAF2]">
+            <p class="font-bold text-xl leading-[30px]">Most Crowded Yet Harmony Place</p>
+            <hr class="border-[#E8EAF2]">
+            <p class="text-cp-light-grey">Shanghai, 2021</p>
+        </div>
+        <div class="card bg-white flex flex-col h-full p-[30px] gap-[30px] rounded-[20px] border border-[#E8EAF2] hover:border-cp-dark-blue transition-all duration-300">
+            <div class="w-[55px] h-[55px] flex shrink-0">
+                <img src="{{ asset('assets/frontend/icons/cup-blue.svg') }}" alt="icon">
+            </div>
+            <hr class="border-[#E8EAF2]">
+            <p class="font-bold text-xl leading-[30px]">Small Things Made Much Big Impacts</p>
+            <hr class="border-[#E8EAF2]">
+            <p class="text-cp-light-grey">Zurich, 2022</p>
+        </div>
+        <div class="card bg-white flex flex-col h-full p-[30px] gap-[30px] rounded-[20px] border border-[#E8EAF2] hover:border-cp-dark-blue transition-all duration-300">
+            <div class="w-[55px] h-[55px] flex shrink-0">
+                <img src="{{ asset('assets/frontend/icons/cup-blue.svg') }}" alt="icon">
+            </div>
+            <hr class="border-[#E8EAF2]">
+            <p class="font-bold text-xl leading-[30px]">Teamwork and Solidarity</p>
+            <hr class="border-[#E8EAF2]">
+            <p class="text-cp-light-grey">Bandung, 2023</p>
+        </div>
+    </div>
+</div>
+<div id="FAQ" class="bg-[#F6F7FA] w-full py-20 px-[10px] mt-20 -mb-20">
+    <div class="container max-w-[1000px] mx-auto">
+        <div class="flex flex-col lg:flex-row gap-[50px] sm:gap-[70px] items-center">
+            <div class="flex flex-col gap-[30px]">
+                <div class="flex flex-col gap-[10px]">
+                    <h2 class="font-bold text-4xl leading-[45px]">Frequently Asked Questions</h2>
+                </div>
+                <a href="contact.html" class="p-5 bg-cp-black rounded-xl text-white w-fit font-bold">Contact Us</a>
+            </div>
+            <div class="flex flex-col gap-[30px] sm:w-[603px] shrink-0">
+                <div class="flex flex-col p-5 rounded-2xl bg-white w-full">
+                    <button class="accordion-button flex justify-between gap-1 items-center" data-accordion="accordion-faq-1">
+                        <span class="font-bold text-lg leading-[27px] text-left">Can installments be beneficial for both?</span>
+                        <div class="arrow w-9 h-9 flex shrink-0">
+                            <img src="{{ asset('assets/frontend/icons/arrow-circle-down.svg') }}" class="transition-all duration-300" alt="icon">
+                        </div>
+                    </button>
+                    <div id="accordion-faq-1" class="accordion-content hide">
+                        <p class="leading-[30px] text-cp-light-grey pt-[14px]">We want to protect our and clients assets to the max level so that we chose the best one from Jakarta, Indonesia will also protect post building finished completed ahead one.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col p-5 rounded-2xl bg-white w-full">
+                    <button class="accordion-button flex justify-between gap-1 items-center" data-accordion="accordion-faq-2">
+                        <span class="font-bold text-lg leading-[27px] text-left">What kind of framework you popular with?</span>
+                        <div class="arrow w-9 h-9 flex shrink-0">
+                            <img src="{{ asset('assets/frontend/icons/arrow-circle-down.svg') }}" class="transition-all duration-300" alt="icon">
+                        </div>
+                    </button>
+                    <div id="accordion-faq-2" class="accordion-content hide">
+                        <p class="leading-[30px] text-cp-light-grey pt-[14px]">We want to protect our and clients assets to the max level so that we chose the best one from Jakarta, Indonesia will also protect post building finished completed ahead one.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col p-5 rounded-2xl bg-white w-full">
+                    <button class="accordion-button flex justify-between gap-1 items-center" data-accordion="accordion-faq-3">
+                        <span class="font-bold text-lg leading-[27px] text-left">What insurance provider do you use?</span>
+                        <div class="arrow w-9 h-9 flex shrink-0">
+                            <img src="{{ asset('assets/frontend/icons/arrow-circle-down.svg') }}" class="transition-all duration-300" alt="icon">
+                        </div>
+                    </button>
+                    <div id="accordion-faq-3" class="accordion-content hide">
+                        <p class="leading-[30px] text-cp-light-grey pt-[14px]">We want to protect our and clients assets to the max level so that we chose the best one from Jakarta, Indonesia will also protect post building finished completed ahead one.</p>
+                    </div>
+                </div>
+                <div class="flex flex-col p-5 rounded-2xl bg-white w-full">
+                    <button class="accordion-button flex justify-between gap-1 items-center" data-accordion="accordion-faq-4">
+                        <span class="font-bold text-lg leading-[27px] text-left">What if we have other questions?</span>
+                        <div class="arrow w-9 h-9 flex shrink-0">
+                            <img src="{{ asset('assets/frontend/icons/arrow-circle-down.svg') }}" class="transition-all duration-300" alt="icon">
+                        </div>
+                    </button>
+                    <div id="accordion-faq-4" class="accordion-content hide">
+                        <p class="leading-[30px] text-cp-light-grey pt-[14px]">We want to protect our and clients assets to the max level so that we chose the best one from Jakarta, Indonesia will also protect post building finished completed ahead one.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
-        const updateSlider = () => {
-            sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
-
-            sliderItems.forEach((item, index) => {
-                if (index === currentIndex) {
-                    item.classList.add('active');
-                } else {
-                    item.classList.remove('active');
-                }
-            });
-
-            dots.forEach((dot, index) => {
-                if (index === currentIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-
-            sliderItems.forEach((item, index) => {
-                const wowElements = item.querySelectorAll('.wow');
-                wowElements.forEach(el => {
-                    el.classList.remove('animated', 'fadeInLeft');
-                    void el.offsetWidth;
-                });
-
-                if (index === currentIndex) {
-                    wowElements.forEach(el => {
-                        const delay = parseFloat(el.dataset.wowDelay || '0s') * 1000;
-                        setTimeout(() => {
-                            el.classList.add('animated', 'fadeInLeft');
-                        }, 50 + delay);
-                    });
-                }
-            });
-        };
-
-        const goToSlide = (index) => {
-            currentIndex = index;
-            if (currentIndex >= totalItems) {
-                currentIndex = 0;
-            } else if (currentIndex < 0) {
-                currentIndex = totalItems - 1;
-            }
-            updateSlider();
-            resetAutoSlide();
-        };
-
-        const nextSlide = () => {
-            goToSlide(currentIndex + 1);
-        };
-
-        const prevSlide = () => {
-            goToSlide(currentIndex - 1);
-        };
-
-        nextButton.addEventListener('click', nextSlide);
-        prevButton.addEventListener('click', prevSlide);
-
-        const startAutoSlide = () => {
-            autoSlideInterval = setInterval(nextSlide, 5000);
-        };
-
-        const resetAutoSlide = () => {
-            clearInterval(autoSlideInterval);
-            startAutoSlide();
-        };
-
-        updateSlider();
-        startAutoSlide();
-
-        sliderWrapper.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
-        sliderWrapper.addEventListener('mouseleave', startAutoSlide);
-
-        if (typeof WOW !== 'undefined') {
-            new WOW().init();
-        }
-    });
-</script>
-@endpush
+@endsection

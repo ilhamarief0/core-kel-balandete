@@ -1,163 +1,108 @@
 @extends('frontend.layouts.app')
 @section('content')
-    <div class="breadcrumb-area bg-cover" style="background-image: url({{ asset('assets/frontend/img/bg/7.png') }});">
-        <div class="container">
-            <div class="breadcrumb-inner">
-                <div class="row justify-content-center">
-                    <div class="col-lg-6">
-                        <h2 class="page-title">Contact</h2>
-                    </div>
-                    <div class="col-lg-6 text-lg-end">
-                        <ul class="page-list">
-                            <li><a href="index.html">Home</a></li>
-                            <li>Contact</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+  <div id="Contact" class="container max-w-[1130px] mx-auto flex flex-wrap xl:flex-nowrap justify-between gap-[50px] relative z-10">
+    <div class="flex flex-col mt-20 gap-[50px]">
+      <div class="breadcrumb flex items-center gap-[30px]">
+        <p class="text-cp-light-grey last-of-type:text-cp-black last-of-type:font-semibold">Home</p>
+        <span class="text-cp-light-grey">/</span>
+        <p class="text-cp-light-grey last-of-type:text-cp-black last-of-type:font-semibold">Product</p>
+        <span class="text-cp-light-grey">/</span>
+        <p class="text-cp-light-grey last-of-type:text-cp-black last-of-type:font-semibold">Appointment</p>
+      </div>
+      <h1 class="font-extrabold text-4xl leading-[45px]">We Help You to Build Awesome Project</h1>
+      <div class="flex flex-col gap-5">
+        <div class="flex items-center gap-[10px]">
+          <div class="w-6 h-6 flex shrink-0">
+            <img src="{{ asset('assets/frontend/icons/global.svg') }}" alt="icon">
+          </div>
+          <p class="text-cp-dark-blue font-semibold">Jl. Pendidikan No.49 Balandete</p>
         </div>
-    </div>
-    <div class="contact-area pd-top-120 pd-bottom-120">
-        <div class="container">
-            <div class="contact-page-inner bg-gray">
-                <div class="section-title mb-4 pb-2">
-                    <h2 class="title">Direct contact us? </h2>
-                    <p class="content mb-0">For your car we will do everything advice, repairs and maintenance. We are the some preferred choice by many car owners because our experience and knowledge is selfe vident.For your car we will do som everything.</p>
-                </div>
-                <form id="contactForm">
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="single-input-inner">
-                                <input type="text" name="name" id="name" placeholder="Your Name" required>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="single-input-inner">
-                                <input type="email" name="email" id="email" placeholder="Your Email" required>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="single-input-inner">
-                                <input type="text" name="contact" id="contact" placeholder="Your Contact" required>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <div class="single-input-inner">
-                                <textarea placeholder="Message" name="message" id="message" required></textarea>
-                            </div>
-                        </div>
-                        <div class="col-12 text-center">
-                            <button type="submit" class="btn btn-base border-radius-5">Post Comment</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+        <div class="flex items-center gap-[10px]">
+          <div class="w-6 h-6 flex shrink-0">
+            <img src="{{ asset('assets/frontend/icons/call.svg') }}" alt="icon">
+          </div>
+          <p class="text-cp-dark-blue font-semibold">082244156660</p>
         </div>
-    </div>
-    <div class="contact-page-list">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="media single-contact-list">
-                        <div class="media-left">
-                            <img src="{{ asset('assets/frontend/img/icon/13.svg') }}" alt="img">
-                        </div>
-                        <div class="media-body">
-                            <h5>Contacts us</h5>
-                            <h6>{{ $websiteSetting->website_phone }}</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="media single-contact-list">
-                        <div class="media-left">
-                            <img src="{{ asset('assets/frontend/img/icon/14.svg') }}" alt="img">
-                        </div>
-                        <div class="media-body">
-                            <h5>Your Email</h5>
-                            <h6>{{ $websiteSetting->website_email }}</h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="media single-contact-list">
-                        <div class="media-left">
-                            <img src="{{ asset('assets/frontend/img/icon/15.svg') }}" alt="img">
-                        </div>
-                        <div class="media-body">
-                            <h5>Location</h5>
-                            <h6>{{ $websiteSetting->website_address }}</h6>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="flex items-center gap-[10px]">
+          <div class="w-6 h-6 flex shrink-0">
+            <img src="{{ asset('assets/frontend/icons/monitor-mobbile.svg') }}" alt="icon">
+          </div>
+          <p class="text-cp-dark-blue font-semibold">balandeteku.com</p>
         </div>
+      </div>
     </div>
-    <div class="contact-g-map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d41458.4826902408!2d122.51087940058589!3d-4.017457540184249!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sid!2sid!4v1751432495028!5m2!1sid!2sid"></iframe>
-    </div>
-    @endsection
+    <form action="{{ route('contactus.submit') }}" method="POST" enctype="multipart/form-data" class="flex flex-col p-[30px] rounded-[20px] gap-[18px] bg-white shadow-[0_10px_30px_0_#D1D4DF40] w-full md:w-[700px] shrink-0">
+      @csrf
+      <div class="flex items-center gap-[18px]">
+        <div class="flex flex-col gap-2 w-full">
+          <p class="font-semibold">Nama Lengkap</p>
+          <div class="flex items-center gap-[10px] p-[14px_20px] border border-[#E8EAF2] focus-within:border-cp-dark-blue transition-all duration-300 rounded-xl bg-white">
+            <div class="w-[18px] h-[18px] flex shrink-0">
+              <img src="{{ asset('assets/frontend/icons/profile.svg') }}" alt="icon">
+            </div>
+            <input type="text" name="name" class="appearance-none outline-none bg-white placeholder:font-normal placeholder:text-cp-black font-semibold w-full" placeholder="Masukan Nama Lengkap Anda" required>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-[18px]">
+        <div class="flex flex-col gap-2 w-full">
+          <p class="font-semibold">Nomor Hp Anda</p>
+          <div class="flex items-center gap-[10px] p-[14px_20px] border border-[#E8EAF2] focus-within:border-cp-dark-blue transition-all duration-300 rounded-xl bg-white">
+            <div class="w-[18px] h-[18px] flex shrink-0">
+              <img src="{{ asset('assets/frontend/icons/call-black.svg') }}" alt="icon">
+            </div>
+            <input type="tel" name="phone" class="appearance-none outline-none bg-white placeholder:font-normal placeholder:text-cp-black font-semibold w-full" placeholder="Masukan Nomor HP Anda" required>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row items-center gap-[18px]"> 
+        <div class="flex flex-col gap-2 w-full">
+          <p class="font-semibold">Kategori Laporan</p>
+          <div class="flex items-center gap-[10px] p-[14px_20px] border border-[#E8EAF2] focus-within:border-cp-dark-blue transition-all duration-300 rounded-xl bg-white">
+            <div class="w-[18px] h-[18px] flex shrink-0">
+              <img src="{{ asset('assets/frontend/icons/building-4-black.svg') }}" alt="icon">
+            </div>
+            <select name="category" class="appearance-none outline-none w-full invalid:font-normal font-semibold px-[10px] -mx-[10px]" required>
+              <option value="" hidden>Kategori Laporan</option>
+              <option value="Infrastruktur">Infrastruktur</option>
+              <option value="Pelayanan">Pelayanan</option>
+            </select>
+          </div>
+        </div>
+        <div class="flex flex-col gap-2 w-full">
+          <p class="font-semibold">Bukti Laporan</p>
+          <label for="file_input" class="cursor-pointer flex items-center gap-[10px] p-[14px_20px] border border-[#E8EAF2] focus-within:border-cp-dark-blue transition-all duration-300 rounded-xl bg-white">
+            {{-- <div class="w-[18px] h-[18px] flex shrink-0">
+              <img src="{{ asset('assets/frontend/icons/image-add.svg') }}" alt="icon">
+            </div> --}}
+            <span id="file_name_display" class="font-normal text-gray-500 truncate">Unggah Bukti (Opsional)</span>
+            <input id="file_input" name="report_proof" type="file" class="hidden" accept="image/*">
+          </label>
+        </div>
+      </div>
+      <div class="flex flex-col gap-2 w-full">
+        <p class="font-semibold">Keluhan Anda</p>
+        <div class="flex gap-[10px] p-[14px_20px] border border-[#E8EAF2] focus-within:border-cp-dark-blue transition-all duration-300 rounded-xl bg-white">
+          <div class="w-[18px] h-[18px] flex shrink-0 mt-[3px]">
+            <img src="{{ asset('assets/frontend/icons/message-text.svg') }}" alt="icon">
+          </div>
+          <textarea name="message" rows="6" class="appearance-none outline-none bg-white placeholder:font-normal placeholder:text-cp-black font-semibold w-full resize-none" placeholder="Masukan Keluhan Anda"></textarea>
+        </div>
+      </div>
+      <button type="submit" class="bg-cp-dark-blue p-5 w-full rounded-xl hover:shadow-[0_12px_30px_0_#312ECB66] transition-all duration-300 font-bold text-white">Kirim Laporan</button>
+    </form>
+  </div>
 
-@push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
+  <script>
+    const fileInput = document.getElementById('file_input');
+    const fileNameDisplay = document.getElementById('file_name_display');
 
-        const formData = new FormData(this);
-        const name = formData.get('name');
-        const email = formData.get('email');
-        const contact = formData.get('contact');
-        const message = formData.get('message');
-
-        if (!name || !email || !contact || !message) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Validation Error',
-                text: 'All fields are required!',
-                confirmButtonText: 'OK'
-            });
-            return;
+    fileInput.addEventListener('change', function() {
+        if (this.files.length > 0) {
+            fileNameDisplay.textContent = this.files[0].name;
+        } else {
+            fileNameDisplay.textContent = 'Unggah Bukti (Opsional)';
         }
-
-        fetch('/contactus/submit', {
-            method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                'Accept': 'application/json'
-            },
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success!',
-                    text: data.message,
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    document.getElementById('contactForm').reset();
-                });
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Error!',
-                    text: data.message || 'Something went wrong!',
-                    confirmButtonText: 'OK'
-                });
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            Swal.fire({
-                icon: 'error',
-                title: 'Error!',
-                text: 'There was an error submitting your form. Please try again later.',
-                confirmButtonText: 'OK'
-            });
-        });
     });
-</script>
-@endpush
+  </script>
+@endsection

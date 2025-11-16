@@ -15,81 +15,29 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rules\Password;
 use Yajra\DataTables\Facades\DataTables;
 
 class NewsController extends Controller
 {
-      public function dataTable(Request $request)
-     {
-        if ($request->ajax()) {
-            try {
-                $data = News::query();
-
-                if ($search = $request->input('search')) {
-                    $data->where(function ($q) use ($search) {
-                        $q->where('name', 'like', "%{$search}%")
-                            ->orWhere('email', 'like', "%{$search}%");
-                    });
-                }
-
-                return DataTables::of($data)
-                    ->addIndexColumn()
-                    ->addColumn('id', function ($row) {
-                        return $row->id;
-                    })
-                    ->addColumn('images', function ($row) {
-                        return '
-                                  <div class="d-flex align-items-center">
-                                      <div class="symbol symbol-50px overflow-hidden me-4">
-                                          <a href="#">
-                                              <div class="symbol-label" style="height: 60px; width: 60px; border-radius: 0;">
-                                                  <img src="'. asset('storage/' . $row->image) .'" alt="Profile" style="object-fit: cover; object-position: top; height: 100%; width: 100%; border-radius: 0;" />
-                                              </div>
-                                          </a>
-                                      </div>
-                                  </div>
-                        ';
-                    })
-
-                    ->editColumn('created_at', function ($row) {
-                        return $row->created_at->format('d M Y');
-                    })
-                    ->addColumn('actions', function ($row) {
-                      $encryptedId = Crypt::encryptString($row->id);
-                      $editRoute = route('backend.news.edit', ['news' => $encryptedId]);
-                        return '
-                        <div class="text-end">
-                            <a href="#" class="btn btn-light btn-active-light-primary btn-sm" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                Actions
-                            </a>
-                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-semibold fs-7 w-125px py-4" data-kt-menu="true">
-                                <div class="menu-item px-3">
-                                    <a href="'. $editRoute .'" class="menu-link px-3 edit-user-btn">Edit</a>
-                                </div>
-                                <div class="menu-item px-3">
-                                   <a href="#" class="menu-link px-3 delete-user" data-id="'. $row->id .'">Delete</a>
-                                </div>
-                            </div>
-                        </div>';
-                    })
-
-                    ->rawColumns(['images', 'roles' ,'actions'])
-                    ->make(true);
-
-            } catch (\Throwable $e) {
-                return response()->json([
-                    'error' => 'Server error: ' . $e->getMessage()
-                ], 500);
-            }
-        }
-        abort(403, 'Unauthorized action.');
-    }
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('backend.news.index');
+        $title = "Users List";
+        $perPage = $request->input('per_page', 5);
+        $search = $request->input('search');
+
+        $query = News::latest();
+
+        if ($search) {
+            $query->where(function ($q) use ($search) {
+                $q->where('title', 'like', '%' . $search . '%');
+            });
+        }
+        $news = $query->paginate($perPage)->withQueryString();
+        return view('backend.news.index', compact('news', 'title'));
     }
 
     /**
@@ -97,16 +45,21 @@ class NewsController extends Controller
      */
     public function create()
     {
-        return view('backend.news.create');
+        $title = "Tambah Berita";
+        return view('backend.news.add', compact('title'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(NewsStoreRequest $request)
+    public function store(Request $request)
     {
-        $validatedData = $request->validated();
-        // $path = null;
+            $validatedData = $request->validate([
+                'title' => ['required', 'string', 'max:255'],
+                'content' => ['required', 'string'],
+                'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:10048'],
+            ]);
+
         if ($request->hasFile('image')) {
             $path = Helpers::storeImage($request->file('image'), 'news');
         }
@@ -139,20 +92,23 @@ class NewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $news)
+    public function edit(string $id)
     {
-          $id = Crypt::decryptString($news);
-          $newsEdit = News::findOrFail($id);
-          return view('backend.news.edit', compact('newsEdit'));
+          $title = "Edit Berita";
+          $news = News::findOrFail($id);
+          return view('backend.news.edit', compact('news', 'title'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateNewsRequest $request, string $news)
+    public function update(Request $request, string $id)
     {
-        $validatedData = $request->validated();
-        $id = Crypt::decryptString($news);
+        $validatedData = $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'content' => ['required', 'string'],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif', 'max:10048'],
+        ]);
 
         $news = News::findOrFail($id);
         $news->title = $validatedData['title'];
@@ -165,37 +121,18 @@ class NewsController extends Controller
         }
         $news->content = $validatedData['content'];
         $news->save();
-        Session::flash('success_message', 'News ' . $news->title . ' Updated Successfully!');
-        return response()->json(['message' => 'News updated successfully!']);
+        return redirect()->route('backend.news.index')->with('success', 'Berhasil Update Berita');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function delete(DeleteNewsRequest $request)
-    {
-        $validatedData = $request->validated();
 
-        try {
-            DB::beginTransaction();
+     public function destroy(string $id)
+     {
+      $news = News::findOrfail($id);
+      $news->delete();
+      return redirect()->route('backend.news.index')->with('success', 'Berhasil Hapus Data Berita');
+     }
 
-            $deletedNewsCount = 0;
-            foreach ($validatedData['ids'] as $newsId) {
-                $news = News::findOrFail($newsId);
-                if ($news->image && file_exists(storage_path('app/public/' . $news->image))) {
-                    Storage::disk('public')->delete($news->image);
-                }
-                $news->delete();
-                $deletedNewsCount++;
-            }
-
-            DB::commit();
-            $message = $deletedNewsCount > 1 ? "Selected News have been deleted successfully." : "News has been deleted successfully.";
-            return response()->json(['message' => $message, 'status' => 'success']);
-        } catch (\Exception $e) {
-            DB::rollBack();
-            Log::error('User Bulk Delete Error: ' . $e->getMessage());
-            return response()->json(['error' => 'Failed to delete selected news: ' . $e->getMessage(), 'status' => 'error'], 500);
-        }
-    }
 }
